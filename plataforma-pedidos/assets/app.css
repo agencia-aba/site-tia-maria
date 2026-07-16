@@ -1,0 +1,139 @@
+/* =========================================================
+   Plataforma de Pedidos — Tia Maria
+   Camada de UI de aplicativo (por cima do design system do site)
+   ========================================================= */
+
+.proto-banner{
+  background: var(--ink); color: var(--cream);
+  font-size: .82rem; text-align: center; padding: .55em 1em;
+}
+.proto-banner strong{ color: var(--gold); }
+
+/* ---------- Layout de app (cliente) ---------- */
+.app-shell{ min-height: 100vh; display:flex; flex-direction:column; }
+.app-topbar{
+  background: var(--paper); border-bottom: 1px solid var(--line);
+  padding: .9rem 0; position: sticky; top:0; z-index: 50;
+}
+.app-topbar .container{ display:flex; align-items:center; justify-content:space-between; }
+
+.stepper{ display:flex; align-items:center; gap: .5rem; margin-block: var(--space-3); flex-wrap:wrap; }
+.stepper .step{ display:flex; align-items:center; gap:.6rem; font-size:.85rem; font-weight:700; color: var(--ink-soft); }
+.stepper .step .dot{ width:28px; height:28px; border-radius:50%; background: var(--cream-deep); display:flex; align-items:center; justify-content:center; font-size:.8rem; }
+.stepper .step.done .dot{ background: var(--terracotta); color:#fff; }
+.stepper .step.current{ color: var(--ink); }
+.stepper .step.current .dot{ background: var(--ink); color:#fff; }
+.stepper .sep{ width: 28px; height: 2px; background: var(--line); }
+
+/* ---------- Badges de estoque ---------- */
+.stock-badge{ display:inline-flex; align-items:center; gap:.4em; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:.35em .7em; border-radius:999px; }
+.stock-badge.pronta{ background:#E4F3E6; color:#2C7A39; }
+.stock-badge.encomenda{ background:#FDECD8; color:#B5651D; }
+.stock-badge .dot{ width:6px; height:6px; border-radius:50%; background:currentColor; }
+
+/* ---------- Catálogo (cliente) ---------- */
+.product-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap: var(--space-3); }
+.product-card{ background:var(--paper); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow:hidden; display:flex; flex-direction:column; }
+.product-card .media{ aspect-ratio:4/3; background:var(--cream-deep); overflow:hidden; position:relative; }
+.product-card .media img{ width:100%; height:100%; object-fit:cover; }
+.product-card .media .stock-badge{ position:absolute; top:.7rem; left:.7rem; }
+.product-card .body{ padding: var(--space-3); display:flex; flex-direction:column; gap:.5rem; flex:1; }
+.product-card .lead{ font-size:.78rem; color: var(--ink-soft); }
+.qty-row{ display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:.6rem; }
+.qty-control{ display:flex; align-items:center; gap:.5rem; border:1px solid var(--line); border-radius:999px; padding:.2rem .3rem; }
+.qty-control button{ width:26px; height:26px; border-radius:50%; border:none; background:var(--cream-deep); cursor:pointer; font-weight:700; }
+.qty-control input{ width:28px; text-align:center; border:none; background:none; font-weight:700; }
+
+/* ---------- Carrinho / resumo ---------- */
+.cart-panel{ background:var(--paper); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: var(--space-3); position: sticky; top: 6rem; }
+.cart-line{ display:flex; justify-content:space-between; gap:.7rem; padding:.6rem 0; border-bottom:1px dashed var(--line); font-size:.9rem; }
+.cart-line:last-of-type{ border-bottom:none; }
+.cart-total{ display:flex; justify-content:space-between; font-family:var(--font-display); font-size:1.3rem; padding-top: var(--space-2); border-top:2px solid var(--ink); margin-top:var(--space-2); }
+.pay-note{ background: var(--terracotta-l); color: var(--terracotta-d); border-radius: var(--radius-sm); padding: .8rem 1rem; font-size:.85rem; font-weight:600; margin-top: var(--space-2); }
+
+/* ---------- Formulários ---------- */
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap: var(--space-2); }
+.field{ display:flex; flex-direction:column; gap:.35rem; margin-bottom: var(--space-2); }
+.field label{ font-size:.78rem; font-weight:700; color: var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+.field input, .field select, .field textarea{
+  padding:.75em .9em; border:1px solid var(--line); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size:.95rem; background: var(--paper); color: var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus{ outline:2px solid var(--terracotta); outline-offset:1px; }
+.field-hint{ font-size:.78rem; color: var(--ink-soft); }
+.radio-card{ display:flex; align-items:flex-start; gap:.8rem; border:1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); cursor:pointer; }
+.radio-card.selected{ border-color: var(--terracotta); background: var(--terracotta-l); }
+.radio-card input{ margin-top:.3rem; }
+
+.alert{ border-radius: var(--radius-sm); padding: .9rem 1.1rem; font-size:.88rem; display:flex; gap:.7rem; align-items:flex-start; }
+.alert-error{ background:#FBE3DE; color:#96331C; }
+.alert-success{ background:#E4F3E6; color:#2C7A39; }
+.alert-info{ background: var(--cream-deep); color: var(--ink-soft); }
+
+/* ---------- Admin: shell ---------- */
+.admin-shell{ display:grid; grid-template-columns: 250px 1fr; min-height:100vh; }
+.admin-sidebar{ background: var(--ink); color: var(--cream); padding: var(--space-3); display:flex; flex-direction:column; gap: var(--space-3); }
+.admin-sidebar .brand{ color:#fff; }
+.admin-sidebar .brand-tag{ color: rgba(251,246,239,.6); }
+.admin-nav a{ display:flex; align-items:center; gap:.7rem; padding:.7em .9em; border-radius: var(--radius-sm); font-weight:600; font-size:.9rem; color: rgba(251,246,239,.75); }
+.admin-nav a:hover{ background: rgba(255,255,255,.06); color:#fff; }
+.admin-nav a.active{ background: var(--terracotta); color:#fff; }
+.admin-sidebar .foot{ margin-top:auto; font-size:.78rem; color: rgba(251,246,239,.5); }
+.admin-main{ background: var(--cream); padding: var(--space-4); }
+.admin-topbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-3); }
+.admin-topbar h1{ font-size:1.7rem; margin-bottom:.1em; }
+.admin-topbar .subtitle{ color: var(--ink-soft); font-size:.9rem; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap: var(--space-3); margin-bottom: var(--space-4); }
+.stat-card{ background:var(--paper); border-radius: var(--radius-md); padding: var(--space-3); box-shadow: var(--shadow-sm); }
+.stat-card .num{ font-family: var(--font-display); font-size:2rem; color: var(--terracotta-d); }
+.stat-card .label{ font-size:.8rem; color: var(--ink-soft); font-weight:600; }
+
+/* ---------- Kanban de pedidos ---------- */
+.kanban{ display:grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); align-items:start; }
+.kanban-col{ background: var(--cream-deep); border-radius: var(--radius-md); padding: var(--space-2); min-height: 200px; }
+.kanban-col-head{ display:flex; justify-content:space-between; align-items:center; padding:.4rem .5rem .8rem; font-weight:700; font-size:.85rem; text-transform:uppercase; letter-spacing:.04em; color: var(--ink-soft); }
+.kanban-col-head .count{ background:var(--paper); border-radius:999px; padding:.1em .6em; font-size:.75rem; }
+.order-card{ background:var(--paper); border-radius: var(--radius-sm); padding: var(--space-2); margin-bottom:.7rem; box-shadow: var(--shadow-sm); }
+.order-card .oid{ font-weight:800; font-size:.85rem; }
+.order-card .oname{ font-size:.85rem; color: var(--ink-soft); margin:.2rem 0 .5rem; }
+.order-card .otags{ display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:.5rem; }
+.tag{ font-size:.68rem; font-weight:700; background: var(--cream-deep); padding:.25em .6em; border-radius:999px; color:var(--ink-soft); }
+.tag.retirada{ background:#E3ECFB; color:#2857A8; }
+.tag.entrega{ background:#FBEfE3; color:#A85728; }
+.order-card .actions{ display:flex; gap:.4rem; }
+.order-card .actions button{ flex:1; font-size:.72rem; padding:.5em; border-radius:8px; border:1px solid var(--line); background:var(--cream); cursor:pointer; font-weight:700; }
+.order-card .actions button:hover{ background: var(--ink); color:#fff; }
+
+/* ---------- Tabela genérica (produtos, clientes) ---------- */
+.data-table{ width:100%; border-collapse:collapse; background:var(--paper); border-radius: var(--radius-md); overflow:hidden; box-shadow: var(--shadow-sm); }
+.data-table th, .data-table td{ padding:.85rem 1rem; text-align:left; border-bottom:1px solid var(--line); font-size:.88rem; }
+.data-table th{ background: var(--cream-deep); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color: var(--ink-soft); }
+.data-table tr:last-child td{ border-bottom:none; }
+.data-table td.actions-cell{ display:flex; gap:.4rem; }
+.icon-btn{ width:32px; height:32px; border-radius:8px; border:1px solid var(--line); background:var(--paper); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.icon-btn:hover{ background: var(--cream-deep); }
+
+.toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-3); gap: var(--space-2); flex-wrap:wrap; }
+.search-input{ padding:.7em 1em; border:1px solid var(--line); border-radius:999px; min-width:260px; background:var(--paper); }
+
+.modal-backdrop{ position:fixed; inset:0; background:rgba(43,36,32,.5); display:flex; align-items:center; justify-content:center; z-index:300; }
+.modal{ background:var(--paper); border-radius: var(--radius-lg); padding: var(--space-4); width:100%; max-width:480px; box-shadow:var(--shadow-md); }
+.modal-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-2); }
+.modal-close{ background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--ink-soft); }
+
+[hidden]{ display:none !important; }
+
+@media (max-width: 980px){
+  .product-grid{ grid-template-columns:repeat(2,1fr); }
+  .admin-shell{ grid-template-columns:1fr; }
+  .admin-sidebar{ position:sticky; top:0; z-index:60; flex-direction:row; align-items:center; }
+  .admin-nav{ display:flex; gap:.3rem; overflow-x:auto; }
+  .admin-nav a span.label-full{ display:none; }
+  .stat-grid{ grid-template-columns:repeat(2,1fr); }
+  .kanban{ grid-template-columns:1fr; }
+  .form-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:760px){
+  .product-grid{ grid-template-columns:1fr; }
+}

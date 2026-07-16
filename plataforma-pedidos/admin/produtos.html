@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos — Painel Tia Maria</title>
+<link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
+<link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
+<link rel="stylesheet" href="/site-tia-maria/plataforma-pedidos/assets/app.css">
+</head>
+<body>
+
+<div class="proto-banner">🧪 <strong>Protótipo</strong> — edições ficam só na sessão do navegador (não persistem).</div>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a href="/site-tia-maria/index.html" class="brand"><img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria"><span><span class="brand-name">Tia Maria</span><span class="brand-tag">Painel Admin</span></span></a>
+    <nav class="admin-nav">
+      <a href="/site-tia-maria/plataforma-pedidos/admin/pedidos.html"><span class="label-full">📋 Pedidos</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/produtos.html" class="active"><span class="label-full">🧁 Produtos</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/clientes.html"><span class="label-full">👥 Clientes</span></a>
+    </nav>
+    <div class="foot">Logado como admin@tiamaria.com.br<br><a href="/site-tia-maria/plataforma-pedidos/admin/login.html" style="color:#fff">Sair</a></div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>Inventário de Produtos</h1>
+        <div class="subtitle">Categorize como Pronta Entrega (estoque) ou Sob Encomenda (com prazo de produção)</div>
+      </div>
+      <button class="btn btn-primary btn-sm" id="btn-novo">+ Novo produto</button>
+    </div>
+
+    <div class="toolbar">
+      <input type="text" class="search-input" placeholder="Buscar produto..." id="busca">
+      <div class="tab-row" data-tabs="filtro-estoque" style="margin:0">
+        <button class="tab-btn active" data-tab-value="todos">Todos</button>
+        <button class="tab-btn" data-tab-value="pronta">Pronta entrega</button>
+        <button class="tab-btn" data-tab-value="encomenda">Sob encomenda</button>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Prazo</th><th></th></tr></thead>
+      <tbody id="produtos-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal" hidden>
+  <div class="modal">
+    <div class="modal-head"><h3 class="mt-0">Novo produto</h3><button class="modal-close" id="modal-close">&times;</button></div>
+    <form id="form-produto">
+      <div class="field"><label>Nome</label><input type="text" id="f-nome" required></div>
+      <div class="form-grid">
+        <div class="field"><label>Categoria</label>
+          <select id="f-categoria"><option>Bolos</option><option>Salgados</option><option>Docinhos</option><option>Kits Festa</option></select>
+        </div>
+        <div class="field"><label>Preço (R$)</label><input type="number" id="f-preco" step="0.01" required></div>
+      </div>
+      <div class="field"><label>Tipo de estoque</label>
+        <select id="f-estoque">
+          <option value="pronta">Pronta entrega</option>
+          <option value="encomenda">Sob encomenda</option>
+        </select>
+      </div>
+      <div class="field" id="f-leadtime-field"><label>Prazo de produção (dias)</label><input type="number" id="f-leadtime" min="0"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Salvar produto</button>
+    </form>
+  </div>
+</div>
+
+<script src="/site-tia-maria/plataforma-pedidos/assets/data.js"></script>
+<script>
+  let produtos = JSON.parse(JSON.stringify(CATALOGO));
+  let filtroAtual = 'todos';
+
+  function render() {
+    const busca = document.getElementById('busca').value.toLowerCase();
+    const lista = produtos.filter((p) =>
+      (filtroAtual === 'todos' || p.tipoEstoque === filtroAtual) &&
+      p.nome.toLowerCase().includes(busca)
+    );
+    document.getElementById('produtos-tbody').innerHTML = lista.map((p) => `
+      <tr>
+        <td>${p.nome}</td>
+        <td>${p.categoria}</td>
+        <td>${p.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+        <td>${p.tipoEstoque === 'pronta' ? '<span class="stock-badge pronta"><span class="dot"></span>Pronta entrega</span>' : '<span class="stock-badge encomenda"><span class="dot"></span>Sob encomenda</span>'}</td>
+        <td>${p.tipoEstoque === 'encomenda' ? (p.leadTimeDias || 0) + ' dia(s)' : '—'}</td>
+        <td class="actions-cell">
+          <button class="icon-btn" title="Editar">✎</button>
+          <button class="icon-btn" title="Remover" data-remover="${p.id}">🗑</button>
+        </td>
+      </tr>
+    `).join('') || `<tr><td colspan="6" style="text-align:center; color:var(--ink-soft)">Nenhum produto encontrado</td></tr>`;
+  }
+
+  document.getElementById('busca').addEventListener('input', render);
+  document.querySelectorAll('[data-tabs="filtro-estoque"] .tab-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-tabs="filtro-estoque"] .tab-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      filtroAtual = btn.dataset.tabValue;
+      render();
+    });
+  });
+
+  document.getElementById('produtos-tbody').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-remover]');
+    if (!btn) return;
+    produtos = produtos.filter((p) => p.id !== btn.dataset.remover);
+    render();
+  });
+
+  const modal = document.getElementById('modal');
+  document.getElementById('btn-novo').addEventListener('click', () => { modal.hidden = false; });
+  document.getElementById('modal-close').addEventListener('click', () => { modal.hidden = true; });
+  document.getElementById('f-estoque').addEventListener('change', (e) => {
+    document.getElementById('f-leadtime-field').style.display = e.target.value === 'encomenda' ? 'flex' : 'none';
+  });
+
+  document.getElementById('form-produto').addEventListener('submit', (e) => {
+    e.preventDefault();
+    produtos.unshift({
+      id: 'novo-' + Date.now(),
+      nome: document.getElementById('f-nome').value,
+      categoria: document.getElementById('f-categoria').value,
+      preco: parseFloat(document.getElementById('f-preco').value) || 0,
+      tipoEstoque: document.getElementById('f-estoque').value,
+      leadTimeDias: parseInt(document.getElementById('f-leadtime').value) || 0,
+      img: '', desc: '',
+    });
+    modal.hidden = true;
+    e.target.reset();
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>

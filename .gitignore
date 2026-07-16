@@ -1,0 +1,9 @@
+# Ferramentas de desenvolvimento local (Claude Code)
+.claude/
+
+# Pasta duplicada inesperada (não faz parte do site - ver observação no commit)
+site-tia-maria/
+
+# SO
+.DS_Store
+Thumbs.db

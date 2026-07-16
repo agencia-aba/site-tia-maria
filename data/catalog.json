@@ -1,0 +1,527 @@
+{
+  "meta": {
+    "fonte": "https://tiamaria.com.br/ (Joomla, capturado em 2026-07-15)",
+    "whatsapp": "5511947207019",
+    "whatsappMensagemModeloBolo": "Olá Tia Maria. Quero encomendar um bolo: {codigo} {nome}. Meu nome é ",
+    "precosValidosAte": "30/05/2026",
+    "observacaoImagens": "As imagens dos produtos são ilustrativas."
+  },
+  "bolos": {
+    "tipos": [
+      {
+        "nome": "Decoração Tradicional",
+        "precoBase": 77,
+        "serveAte": 10,
+        "urlEscolhaMassa": "/bolos/escolha-massa-decoracao-tradicional",
+        "massas": [
+          {
+            "nome": "Massa Branca",
+            "precoBase": 77,
+            "url": "/bolos/massa-branca",
+            "formatoTamanhoPorSufixo": {
+              "A": "10 pessoas / Redondo",
+              "B": "15/20 pessoas / Redondo",
+              "C": "15/20 pessoas / Retangular",
+              "D": "25 pessoas / Retangular",
+              "E": "30/40 pessoas / Retangular"
+            },
+            "sabores": [
+              {"codigo": "MB1", "nome": "Abacaxi com creme Belga", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB2", "nome": "Abacaxi com coco e creme Belga", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB3", "nome": "Pêssego com creme Belga", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB4", "nome": "Morango c/ chantilly", "precos": {"A": 89, "B": 178, "C": 178, "D": 223, "E": 356}},
+              {"codigo": "MB5", "nome": "Morango com creme Belga", "precos": {"A": 89, "B": 178, "C": 178, "D": 223, "E": 356}},
+              {"codigo": "MB6", "nome": "Mousse de Doce de leite com morango", "precos": {"A": 84, "B": 167, "C": 167, "D": 209, "E": 335}},
+              {"codigo": "MB7", "nome": "Mousse maracujá", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB8", "nome": "Mousse maracujá", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}, "obs": "Código duplicado no site com o mesmo nome de MB7 - confirmar com o cliente se é sabor distinto"},
+              {"codigo": "MB9", "nome": "Mousse de doce de leite com Abacaxi", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB10", "nome": "Paçoquinha", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB11", "nome": "Mousse de Doce de leite com abacaxi e ameixa", "precos": {"A": 77, "B": 155, "C": 155, "D": 193, "E": 310}},
+              {"codigo": "MB13", "nome": "Mousse de doce de leite com nozes", "precos": {"A": 98, "B": 195, "C": 195, "D": 244, "E": 390}},
+              {"codigo": "MB14", "nome": "Beijinho", "precos": {"A": 98, "B": 195, "C": 195, "D": 244, "E": 390}},
+              {"codigo": "MB15", "nome": "Mousse de maracujá com pedaços de chocolate", "precos": {"A": 89, "B": 178, "C": 178, "D": 223, "E": 356}},
+              {"codigo": "MB16", "nome": "Leite ninho com morango", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MB17", "nome": "Doce de leite (puro) com ameixa em pedaços", "precos": {"A": 89, "B": 178, "C": 178, "D": 223, "E": 356}}
+            ],
+            "obsCodigos": "MB12 não existe no site (pulado, provavelmente sabor descontinuado)."
+          },
+          {
+            "nome": "Massa de Chocolate",
+            "precoBase": 93,
+            "url": "/bolos/massa-chocolate-decoracao-tradicional",
+            "formatoTamanhoPorSufixo": {
+              "A": "10 pessoas / Redondo",
+              "B": "15/20 pessoas / Redondo",
+              "C": "15/20 pessoas / Retangular",
+              "D": "25 pessoas / Retangular",
+              "E": "30/40 pessoas / Retangular"
+            },
+            "sabores": [
+              {"codigo": "MC1", "nome": "Brigadeiro", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC2", "nome": "Prestígio", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC3", "nome": "Chocolate com morango", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC4", "nome": "Floresta Negra Tradicional ou com morango", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC5", "nome": "Mousse de Chocolate", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC6", "nome": "Brigadeiro branco e brigadeiro preto", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC7", "nome": "Chocolate com Bombom", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC8", "nome": "Brigadeiro e mousse de Maracujá", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC9", "nome": "Brigadeiro e mousse de Morango", "precos": {"A": 93, "B": 187, "C": 187, "D": 233, "E": 373}},
+              {"codigo": "MC10", "nome": "Beijinho", "precos": {"A": 98, "B": 195, "C": 195, "D": 244, "E": 390}},
+              {"codigo": "MC11", "nome": "Brigadeiro/Beijinho", "precos": {"A": 98, "B": 195, "C": 195, "D": 244, "E": 390}},
+              {"codigo": "MC12", "nome": "Brigadeiro com Cereja", "precos": {"A": 98, "B": 195, "C": 195, "D": 244, "E": 390}},
+              {"codigo": "MC13", "nome": "Brigadeiro com Nozes", "precos": {"A": 98, "B": 195, "C": 195, "D": 244, "E": 390}},
+              {"codigo": "MC14", "nome": "Trufado Tradicional", "precos": {"A": 132, "B": 265, "C": 265, "D": 331, "E": 529}},
+              {"codigo": "MC16", "nome": "Trufado com morango ou cereja", "precos": {"A": 148, "B": 295, "C": 295, "D": 369, "E": 590}},
+              {"codigo": "MC17", "nome": "Bolo Kit Kat", "precos": {"A": 182, "B": 363}, "obs": "Só existem tamanhos A e B para este sabor no site (sem C, D, E)."}
+            ],
+            "obsCodigos": "MC15 não existe no site (pulado)."
+          }
+        ]
+      },
+      {
+        "nome": "Decoração Personalizada",
+        "precoBase": 126,
+        "serveAte": 5,
+        "urlEscolhaMassa": "/bolos/decoracao-personalizada-escolha-da-massa",
+        "massas": [
+          {
+            "nome": "Massa Branca",
+            "precoBase": 126,
+            "url": "/bolos/decoracao-personalizada-massa-branca",
+            "formatoTamanhoPorSufixo": {
+              "base": "5 pessoas / Redondo",
+              "A": "10/15 pessoas / Redondo",
+              "B": "20/25 pessoas / Redondo"
+            },
+            "sabores": [
+              {"codigo": "PER MB 1", "nome": "Morango com mousse", "precos": {"base": 126, "A": 171, "B": 248}},
+              {"codigo": "PER MB 2", "nome": "Abacaxi com creme Belga", "precos": {"base": 126, "A": 171, "B": 248}},
+              {"codigo": "PER MB 3", "nome": "Mousse de doce de leite com coco", "precos": {"base": 126, "A": 171, "B": 248}},
+              {"codigo": "PER MB 4", "nome": "Mousse de doce de leite com ameixa", "precos": {"base": 126, "A": 171, "B": 248}},
+              {"codigo": "PER MB 5", "nome": "Mousse de doce de leite com abacaxi", "precos": {"base": 126, "A": 171, "B": 248}},
+              {"codigo": "PER MB 6", "nome": "Mousse de maracujá", "precos": {"base": 126, "A": 171, "B": 248}}
+            ]
+          },
+          {
+            "nome": "Massa de Chocolate",
+            "precoBase": 126,
+            "url": "/bolos/decoracao-personalizada-massa-de-chocolate",
+            "formatoTamanhoPorSufixo": {
+              "base": "5 pessoas / Redondo",
+              "A": "10/15 pessoas / Redondo",
+              "B": "20/25 pessoas / Redondo"
+            },
+            "sabores": [
+              {"codigo": "PER MC 1", "nome": "Brigadeiro", "precos": {"base": 126, "A": 202, "B": 299}, "obs": "No HTML do site, tanto o preço de 10-15 quanto o de 20-25 pessoas aparecem rotulados como 'PER MC 1 B' (provável erro de digitação do site; o valor de 10-15 pessoas foi mantido como 'A' aqui por consistência com as demais linhas)."},
+              {"codigo": "PER MC 2", "nome": "Chocolate com Bombom", "precos": {"base": 126, "A": 202, "B": 299}},
+              {"codigo": "PER MC 3", "nome": "Mousse de Chocolate", "precos": {"base": 126, "A": 202, "B": 299}},
+              {"codigo": "PER MC 4", "nome": "Floresta Negra", "precos": {"base": 126, "A": 202, "B": 299}}
+            ]
+          }
+        ]
+      }
+    ],
+    "extras": [
+      {"nome": "Topo de bolo", "preco": 20, "descricao": "Adicional de topo de bolo (topper). Galeria de exemplos em /images/bolos-topo/topo1a.jpg ... topo11a.jpg", "url": "/bolos/massa-branca (seção 'BOLOS TRADICIONAIS COM TOPO')"},
+      {"nome": "Decoração especial (acréscimo)", "preco": 25, "descricao": "Acréscimo de R$25,00 para decorações especiais. Galeria de exemplos em /images/especiais-05-2022/decoracao-especial-01.jpg, 03, 04, 06, 07, 08.jpg", "url": "/bolos/massa-branca (seção 'BOLOS DECORAÇÃO ESPECIAL')"}
+    ],
+    "notasCrawl": "As seções 'BOLOS DECORAÇÃO ESPECIAL', 'ACRÉSCIMO DE R$25,00' e 'BOLOS TRADICIONAIS COM TOPO' são painéis/galerias informativas dentro da própria página /bolos/massa-branca (e replicadas em outras páginas do fluxo), não páginas separadas com preços próprios por item - aparentam ser add-ons genéricos aplicáveis a qualquer bolo."
+  },
+  "salgados": {
+    "categorias": [
+      {
+        "nome": "Sanduíche 70cm (lanche de metro)",
+        "observacao": "Rendimento de 13 à 15 fatias",
+        "antecedencia": "3 dias",
+        "itens": [
+          {"nome": "Frango com Catupiry", "preco": 83},
+          {"nome": "Frango com Mussarela", "preco": 83},
+          {"nome": "Presunto e Mussarela", "preco": 83},
+          {"nome": "Peito de peru com mussarela ou queijo prato", "preco": 90},
+          {"nome": "Lombo com mussarela ou queijo prato", "preco": 93},
+          {"nome": "Salame com mussarela", "preco": 95},
+          {"nome": "Peito de peru c/ queijo branco", "preco": 95},
+          {"nome": "Salame, patê de azeitona, queijo branco", "preco": 95},
+          {"nome": "Mussarela, rúcula e tomate seco", "preco": 95},
+          {"nome": "Peito de peru, patê de cenoura, queijo branco", "preco": 95},
+          {"nome": "Provolone, mussarela, catupiry", "preco": 95},
+          {"nome": "Mussarela de búfala, rúcula e tomate seco", "preco": 103}
+        ]
+      },
+      {
+        "nome": "Salgados Assados Especiais",
+        "observacao": "25 unidades",
+        "itens": [
+          {"nome": "Mini pão de batata, frango, presunto e queijo, calabresa com catupiry", "preco": 67},
+          {"nome": "Mini Croissant", "preco": 82}
+        ]
+      },
+      {
+        "nome": "Mini Lanches",
+        "observacao": "25 unidades",
+        "antecedencia": "uma semana",
+        "itens": [
+          {"nome": "Presunto e queijo", "preco": 87},
+          {"nome": "Patê de frango", "preco": 87},
+          {"nome": "Peito de peru, mussarela", "preco": 92},
+          {"nome": "Salame com mussarela", "preco": 100}
+        ]
+      },
+      {
+        "nome": "Salgados Fritos Quentes",
+        "observacao": "Sortido, vendido por quantidade",
+        "itens": [
+          {"nome": "Salgados fritos quentes (sortido)", "preco": 76, "quantidade": "100 unidades"},
+          {"nome": "Salgados fritos quentes (sortido)", "preco": 43, "quantidade": "50 unidades"},
+          {"nome": "Salgados fritos quentes (sortido)", "preco": 26, "quantidade": "25 unidades"}
+        ]
+      },
+      {
+        "nome": "Salgados Fritos Congelados",
+        "observacao": "25 unidades",
+        "itens": [
+          {"nome": "Salgados fritos congelados (sortido)", "preco": 19}
+        ]
+      },
+      {
+        "nome": "Salgados Assados",
+        "observacao": "25 unidades (exceto onde indicado)",
+        "itens": [
+          {"nome": "Esfiha", "preco": 36},
+          {"nome": "Esfihas de queijo", "preco": 36},
+          {"nome": "Enroladinho", "preco": 36},
+          {"nome": "Empada", "preco": 39},
+          {"nome": "Pastel assado", "preco": 39},
+          {"nome": "Pão de queijo", "preco": 41, "unidade": "Kg"}
+        ]
+      },
+      {
+        "nome": "Refrigerantes e Suco",
+        "itens": [
+          {"nome": "Coca-Cola", "preco": 20},
+          {"nome": "Fanta, Kuat, Sprite", "preco": 18},
+          {"nome": "Suco Del Vale 1L", "preco": 18}
+        ]
+      }
+    ],
+    "imagens": ["/images/metro.jpg", "/images/mini-croissant.jpg", "/images/mini-lanches.jpg", "/images/salgados-fritos.jpg", "/images/salgados-fritos2.jpg", "/images/esfihas2.jpg", "/images/2026/02/25/refris2.png"]
+  },
+  "doces": {
+    "categorias": [
+      {
+        "nome": "Doces Especiais (unidade/kilo)",
+        "itens": [
+          {"nome": "Carolinas", "preco": 82, "unidade": "Kilo"},
+          {"nome": "Lua de Mel (creme ou doce de leite)", "preco": 4, "unidade": "unidade"}
+        ]
+      },
+      {
+        "nome": "Doces Tradicionais",
+        "observacao": "O cento (100 unidades)",
+        "itens": [
+          {"nome": "Brigadeiro, Beijinho, Bicho de pé, Brigadeiro branco", "preco": 112}
+        ]
+      },
+      {
+        "nome": "Doces Especiais",
+        "observacao": "O cento (100 unidades)",
+        "itens": [
+          {"nome": "Mini tortas (morango, limão, maracujá, chocolate)", "preco": 268},
+          {"nome": "Camafeu", "preco": 250},
+          {"nome": "Olho de sogra", "preco": 231},
+          {"nome": "Brigadeiro de uva", "preco": 313},
+          {"nome": "Desejo de chocolate", "preco": 250}
+        ]
+      },
+      {
+        "nome": "Doces de copinho (25ml)",
+        "observacao": "O cento (100 unidades)",
+        "itens": [
+          {"nome": "Brigadeiro, Beijinho, Bicho de pé, Mousse (variados)", "preco": 255}
+        ]
+      },
+      {
+        "nome": "Cupcake",
+        "sabores": "Chocolate, mousse de morango e mousse de maracujá",
+        "itens": [
+          {"nome": "Mini cupcakes - 12 unidades", "preco": 66},
+          {"nome": "Mini cupcakes - 24 unidades", "preco": 132},
+          {"nome": "Mini cupcakes - 36 unidades", "preco": 198},
+          {"nome": "Cupcake tradicional - 12 unidades", "preco": 90},
+          {"nome": "Cupcake tradicional - 24 unidades", "preco": 180},
+          {"nome": "Cupcake tradicional - 36 unidades", "preco": 270}
+        ]
+      }
+    ],
+    "imagens": ["/images/lua-mel.jpg", "/images/doces-tradicionais.jpg", "/images/tortinhas.jpg", "/images/brigadeiro-copinho.jpg", "/images/cup-cakes.jpg"]
+  },
+  "kitsFesta": {
+    "familias": [
+      {
+        "nome": "Em Casa",
+        "url": "/kits-festa/em-casa",
+        "kits": [
+          {
+            "nome": "Comemore em Casa",
+            "url": "/kits-festa/em-casa/comemore-em-casa",
+            "variantes": [
+              {"serve": "5 pessoas", "precoAvista": 275, "inclui": {"bolo": "1 Bolo de 1kg", "docinhos": ["20 Doces"], "cupcakes": ["12 Mini cupcakes"], "salgados": ["50 Salgados"]}},
+              {"serve": "10 pessoas", "precoAvista": 350, "inclui": {"bolo": "1 Bolo de 1,5kg", "docinhos": ["30 Doces"], "cupcakes": ["12 Mini cupcakes"], "salgados": ["75 Salgados"]}}
+            ],
+            "imagem": "/images/festa-caixa.jpg"
+          },
+          {
+            "nome": "Festa na Caixa",
+            "url": "/kits-festa/em-casa/festa-na-caixa",
+            "precoAvista": 203,
+            "inclui": {
+              "bolo": "1 bolo 1kg",
+              "docinhos": ["10 Docinhos"],
+              "salgados": ["25 Salgados"],
+              "refrigerantes": ["2 Coca-Cola (lata)"],
+              "descartaveis": ["1 Vela (palito)"],
+              "observacao": "Coloque mensagem personalizada, com fotos"
+            },
+            "imagem": "/images/festa-caixa1.jpg"
+          },
+          {
+            "nome": "10 Pessoas",
+            "url": "/kits-festa/em-casa/p-10-pessoas",
+            "precoAvista": 468,
+            "parcelamento": "3x R$156,00",
+            "inclui": {
+              "bolo": "1 Bolo redondo aro 22cm (1,5kg)",
+              "docinhos": ["20 Brigadeiros", "20 Beijinhos"],
+              "salgados": ["50 Coxinhas", "25 Bolinhos de queijo", "25 Risoles", "25 Kibes"],
+              "refrigerantes": ["1 Coca-cola 2L", "1 Kuat 2L"],
+              "descartaveis": ["20 Copos", "20 Pratos", "15 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-em-casa/10-pessoas.jpg"
+          },
+          {
+            "nome": "15 Pessoas",
+            "url": "/kits-festa/em-casa/p-15-pessoas",
+            "precoAvista": 616,
+            "parcelamento": "3x R$205,33",
+            "inclui": {
+              "bolo": "1 Bolo redondo aro 25cm (2kg)",
+              "docinhos": ["15 Brigadeiros", "15 Brigadeiros branco", "15 Beijinhos", "15 Bichos de pé"],
+              "salgados": ["50 Coxinhas", "50 Bolinhos de queijo", "25 Risoles", "25 Kibes", "25 Croquetes"],
+              "refrigerantes": ["2 Coca-cola 2L", "1 Kuat 2L", "1 Fanta 2L"],
+              "descartaveis": ["30 Copos", "20 Pratos", "20 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-em-casa/15-pessoas.jpg"
+          },
+          {
+            "nome": "20 Pessoas",
+            "url": "/kits-festa/em-casa/p-20-pessoas",
+            "precoAvista": 805,
+            "parcelamento": "3x R$268,33",
+            "inclui": {
+              "bolo": "1 Bolo retangular 20cm x 30cm (2,5kg)",
+              "docinhos": ["20 Brigadeiros", "20 Brigadeiros branco", "20 Beijinhos", "20 Bichos de pé"],
+              "salgados": ["75 Coxinhas", "75 Bolinhos de queijo", "50 Risoles", "25 Kibes", "25 Croquetes"],
+              "refrigerantes": ["2 Coca-cola 2L", "2 Kuat 2L", "1 Fanta 2L"],
+              "descartaveis": ["50 Copos", "30 Pratos", "30 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-em-casa/20-pessoas.jpg"
+          },
+          {
+            "nome": "30 Pessoas",
+            "url": "/kits-festa/em-casa/p-30-pessoas",
+            "precoAvista": 1118,
+            "parcelamento": "3x R$372,66",
+            "inclui": {
+              "bolo": "1 Bolo retangular 24cm x 34cm (3kg)",
+              "docinhos": ["30 Brigadeiros", "30 Brigadeiros branco", "30 Beijinhos", "30 Bichos de pé"],
+              "salgados": ["100 Coxinhas", "100 Bolinhos de queijo", "50 Risoles", "50 Croquetes", "50 Kibes"],
+              "refrigerantes": ["3 Coca-cola 2L", "2 Kuat 2L", "2 Fanta 2L", "1 Sprite 2L"],
+              "descartaveis": ["80 Copos", "40 Pratos", "40 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-em-casa/30-pessoas.jpg"
+          },
+          {
+            "nome": "40 Pessoas",
+            "url": "/kits-festa/em-casa/p-40-pessoas",
+            "precoAvista": 1449,
+            "parcelamento": "3x R$483,00",
+            "inclui": {
+              "bolo": "1 Bolo retangular 28cm x 40cm (4kg)",
+              "docinhos": ["40 Brigadeiros", "40 Brigadeiros branco", "40 Beijinhos", "40 Bichos de pé"],
+              "salgados": ["150 Coxinhas", "150 Bolinhos de queijo", "100 Risoles", "50 Croquetes", "50 Kibes"],
+              "refrigerantes": ["3 Coca-cola 2L", "3 Kuat 2L", "2 Fanta 2L", "2 Sprite 2L"],
+              "descartaveis": ["100 Copos", "50 Pratos", "50 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-em-casa/40-pessoas.jpg"
+          },
+          {
+            "nome": "50 Pessoas",
+            "url": "/kits-festa/em-casa/p-50-pessoas",
+            "precoAvista": 1786,
+            "parcelamento": "3x R$595,33",
+            "inclui": {
+              "bolo": "1 Bolo retangular 31cm x 44cm (5kg)",
+              "docinhos": ["50 Brigadeiros", "50 Brigadeiros branco", "50 Beijinhos", "50 Bichos de pé"],
+              "salgados": ["200 Coxinhas", "150 Bolinhos de queijo", "100 Risoles", "100 Kibes", "50 Croquetes"],
+              "refrigerantes": ["4 Coca-cola 2L", "3 Kuat 2L", "3 Fanta 2L", "3 Sprite 2L"],
+              "descartaveis": ["150 Copos", "60 Pratos", "60 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-em-casa/50-pessoas.jpg"
+          }
+        ]
+      },
+      {
+        "nome": "Na Escola",
+        "url": "/kits-festa/na-escola",
+        "kits": [
+          {
+            "nome": "15 Crianças",
+            "url": "/kits-festa/na-escola/p-15-criancas",
+            "precoAvista": 457,
+            "parcelamento": "3x R$152,33",
+            "inclui": {
+              "bolo": "1 Bolo redondo aro 25cm (2kg)",
+              "docinhos": ["20 Brigadeiros", "20 Bicho de pé", "20 Beijinhos"],
+              "salgados": ["25 Coxinhas", "25 Bolinhos de queijo", "25 Risoles"],
+              "refrigerantes": ["1 Coca-cola 2L", "1 Kuat 2L"],
+              "descartaveis": ["30 Copos", "20 Pratos", "20 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escola/15-criancas.jpg"
+          },
+          {
+            "nome": "20 Crianças",
+            "url": "/kits-festa/na-escola/p-20-criancas",
+            "precoAvista": 603,
+            "parcelamento": "3x R$201,00",
+            "inclui": {
+              "bolo": "1 Bolo retangular 20cm x 30cm (2,5kg)",
+              "docinhos": ["20 Brigadeiros", "20 Brigadeiros branco", "20 Beijinhos", "20 Bichos de pé"],
+              "salgados": ["50 Coxinhas", "25 Bolinhos de queijo", "25 Risoles"],
+              "refrigerantes": ["1 Coca-cola 2L", "1 Kuat 2L", "1 Fanta 2L"],
+              "descartaveis": ["40 Copos", "30 Pratos", "30 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escola/20-criancas.jpg"
+          },
+          {
+            "nome": "30 Crianças",
+            "url": "/kits-festa/na-escola/p-30-criancas",
+            "precoAvista": 810,
+            "parcelamento": "3x R$270,00",
+            "inclui": {
+              "bolo": "1 Bolo retangular 24cm x 34cm (3kg)",
+              "docinhos": ["30 Brigadeiros", "30 Brigadeiros branco", "30 Beijinhos", "30 Bichos de pé"],
+              "salgados": ["50 Coxinhas", "50 Bolinhos de queijo", "50 Risoles"],
+              "refrigerantes": ["1 Coca-cola 2L", "2 Kuat 2L", "2 Fanta 2L"],
+              "descartaveis": ["60 Copos", "40 Pratos", "40 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escola/30-criancas.jpg"
+          },
+          {
+            "nome": "40 Crianças",
+            "url": "/kits-festa/na-escola/p-40-criancas",
+            "precoAvista": 1184,
+            "parcelamento": "3x R$394,66",
+            "inclui": {
+              "bolo": "1 Bolo retangular 28cm x 40cm (4kg)",
+              "docinhos": ["40 Brigadeiros", "40 Brigadeiros branco", "40 Bichos de pé", "40 Beijinhos"],
+              "salgados": ["75 Coxinhas", "75 Bolinhos de queijo", "50 Risoles"],
+              "refrigerantes": ["2 Coca-cola 2L", "2 Kuat 2L", "2 Fanta 2L"],
+              "descartaveis": ["80 Copos", "50 Pratos", "50 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escola/40-criancas.jpg"
+          }
+        ]
+      },
+      {
+        "nome": "No Escritório",
+        "url": "/kits-festa/no-escritorio",
+        "kits": [
+          {
+            "nome": "10 Pessoas",
+            "url": "/kits-festa/no-escritorio/p-10-pessoas",
+            "precoAvista": 388,
+            "parcelamento": "3x R$129,40",
+            "inclui": {
+              "bolo": "1 Bolo redondo aro 22cm (1,5kg)",
+              "docinhos": ["15 Brigadeiros", "15 Beijinhos"],
+              "salgados": ["25 Coxinhas", "25 Bolinhos de queijo", "25 Risoles"],
+              "refrigerantes": ["1 Coca-cola 2L", "1 Kuat 2L"],
+              "descartaveis": ["20 Copos", "15 Pratos", "15 Colheres", "20 Guardanapos", "1 Vela palito ou interrogação"]
+            },
+            "imagem": "/images/festa-escritorio/10-pessoas.jpg"
+          },
+          {
+            "nome": "15 Pessoas",
+            "url": "/kits-festa/no-escritorio/p-15-pessoas",
+            "precoAvista": 499,
+            "parcelamento": "3x R$166,37",
+            "inclui": {
+              "bolo": "1 Bolo redondo aro 25cm (2kg)",
+              "docinhos": ["15 Brigadeiros", "15 Beijinhos", "15 Bichos de pé"],
+              "salgados": ["50 Coxinhas", "25 Bolinhos de queijo", "25 Risoles", "25 Kibes"],
+              "refrigerantes": ["1 Coca-cola 2L", "1 Kuat 2L", "1 Fanta 2L"],
+              "descartaveis": ["30 Copos", "30 Pratos", "20 Colheres", "30 Guardanapos", "1 Vela palito ou interrogação"]
+            },
+            "imagem": "/images/festa-escritorio/15-pessoas.jpg"
+          },
+          {
+            "nome": "20 Pessoas",
+            "url": "/kits-festa/no-escritorio/p-20-pessoas",
+            "precoAvista": 606,
+            "parcelamento": "3x R$202,00",
+            "inclui": {
+              "bolo": "1 Bolo retangular 20cm x 30cm (2,5kg)",
+              "docinhos": ["20 Brigadeiros", "20 Beijinhos", "10 Brigadeiros branco", "10 Bichos de pé"],
+              "salgados": ["50 Coxinhas", "25 Bolinhos de queijo", "25 Risoles", "25 Bolinhos de carne", "25 Kibes"],
+              "refrigerantes": ["2 Coca-cola 2L", "1 Kuat 2L", "1 Fanta 2L"],
+              "descartaveis": ["40 Copos", "30 Pratos", "30 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escritorio/20-pessoas.jpg"
+          },
+          {
+            "nome": "30 Pessoas",
+            "url": "/kits-festa/no-escritorio/p-30-pessoas",
+            "precoAvista": 805,
+            "parcelamento": "3x R$268,33",
+            "inclui": {
+              "bolo": "1 Bolo retangular 24cm x 34cm (3kg)",
+              "docinhos": ["30 Brigadeiros", "20 Beijinhos", "20 Brigadeiros branco", "20 Bichos de pé"],
+              "salgados": ["75 Coxinhas", "75 Bolinhos de queijo", "25 Risoles", "25 Kibes", "25 Croquetes"],
+              "refrigerantes": ["2 Coca-cola 2L", "2 Kuat 2L", "1 Fanta 2L"],
+              "descartaveis": ["60 Copos", "40 Pratos", "40 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escritorio/30-pessoas.jpg"
+          },
+          {
+            "nome": "40 Pessoas",
+            "url": "/kits-festa/no-escritorio/p-40-pessoas",
+            "precoAvista": 1047,
+            "parcelamento": "3x R$349,00",
+            "inclui": {
+              "bolo": "1 Bolo retangular 28cm x 40cm (4kg)",
+              "docinhos": ["30 Brigadeiros", "30 Beijinhos", "30 Brigadeiros branco", "30 Bichos de pé"],
+              "salgados": ["75 Coxinhas", "75 Bolinhos de queijo", "50 Risoles", "50 Kibes", "50 Croquetes"],
+              "refrigerantes": ["2 Coca-cola 2L", "2 Kuat 2L", "2 Fanta 2L"],
+              "descartaveis": ["100 Copos", "50 Pratos", "50 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escritorio/40-pessoas.jpg"
+          },
+          {
+            "nome": "50 Pessoas",
+            "url": "/kits-festa/no-escritorio/p-50-pessoas",
+            "precoAvista": 1310,
+            "parcelamento": "3x R$436,66",
+            "inclui": {
+              "bolo": "1 Bolo retangular 31cm x 44cm (5kg)",
+              "docinhos": ["40 Brigadeiros", "40 Beijinhos", "40 Bichos de pé", "30 Brigadeiros branco"],
+              "salgados": ["100 Coxinhas", "100 Bolinhos de queijo", "50 Croquetes", "50 Risoles", "50 Kibes"],
+              "refrigerantes": ["2 Coca-cola 2L", "2 Kuat 2L", "2 Fanta 2L", "2 Sprite 2L"],
+              "descartaveis": ["150 Copos", "60 Pratos", "60 Colheres", "Guardanapos", "1 Vela palito"]
+            },
+            "imagem": "/images/festa-escritorio/50-pessoas.jpg"
+          }
+        ]
+      }
+    ]
+  }
+}

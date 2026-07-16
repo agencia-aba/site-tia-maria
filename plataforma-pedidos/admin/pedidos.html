@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedidos — Painel Tia Maria</title>
+<link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
+<link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
+<link rel="stylesheet" href="/site-tia-maria/plataforma-pedidos/assets/app.css">
+</head>
+<body>
+
+<div class="proto-banner">🧪 <strong>Protótipo</strong> — dados de exemplo, sem persistência real. Mover um pedido de coluna simularia o disparo de notificação ao cliente.</div>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a href="/site-tia-maria/index.html" class="brand"><img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria"><span><span class="brand-name">Tia Maria</span><span class="brand-tag">Painel Admin</span></span></a>
+    <nav class="admin-nav">
+      <a href="/site-tia-maria/plataforma-pedidos/admin/pedidos.html" class="active"><span class="label-full">📋 Pedidos</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/produtos.html"><span class="label-full">🧁 Produtos</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/clientes.html"><span class="label-full">👥 Clientes</span></a>
+    </nav>
+    <div class="foot">Logado como admin@tiamaria.com.br<br><a href="/site-tia-maria/plataforma-pedidos/admin/login.html" style="color:#fff">Sair</a></div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>Pedidos</h1>
+        <div class="subtitle">Acompanhe o status de produção de cada pedido</div>
+      </div>
+      <a href="/site-tia-maria/plataforma-pedidos/index.html" class="btn btn-outline btn-sm" target="_blank">Ver catálogo público</a>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="num" id="stat-novo">0</div><div class="label">Novos</div></div>
+      <div class="stat-card"><div class="num" id="stat-producao">0</div><div class="label">Em produção</div></div>
+      <div class="stat-card"><div class="num" id="stat-pronto">0</div><div class="label">Prontos</div></div>
+      <div class="stat-card"><div class="num" id="stat-total">R$0</div><div class="label">Faturamento (exemplo)</div></div>
+    </div>
+
+    <div class="kanban" id="kanban"></div>
+  </div>
+</div>
+
+<script src="/site-tia-maria/plataforma-pedidos/assets/data.js"></script>
+<script>
+  let pedidos = JSON.parse(JSON.stringify(PEDIDOS_EXEMPLO));
+
+  const COLUNAS = [
+    { key: 'novo', label: 'Novo' },
+    { key: 'producao', label: 'Em Produção' },
+    { key: 'pronto', label: 'Pronto' },
+    { key: 'entregue', label: 'Entregue / Retirado' },
+  ];
+
+  function proximaColuna(status) {
+    const i = COLUNAS.findIndex((c) => c.key === status);
+    return COLUNAS[i + 1] ? COLUNAS[i + 1].key : null;
+  }
+
+  function render() {
+    const kanban = document.getElementById('kanban');
+    kanban.innerHTML = COLUNAS.map((col) => {
+      const itens = pedidos.filter((p) => p.status === col.key);
+      return `
+        <div class="kanban-col">
+          <div class="kanban-col-head"><span>${col.label}</span><span class="count">${itens.length}</span></div>
+          ${itens.map((p) => `
+            <div class="order-card">
+              <div class="oid">${p.id} — ${p.cliente}</div>
+              <div class="oname">${p.itens}</div>
+              <div class="otags">
+                <span class="tag ${p.modo}">${p.modo === 'retirada' ? 'Retirada' : 'Entrega'}</span>
+                <span class="tag">${formatBRLAdmin(p.total)}</span>
+                <span class="tag">${p.data}</span>
+              </div>
+              <div class="actions">
+                ${proximaColuna(p.status) ? `<button data-avancar="${p.id}">Avançar →</button>` : `<button disabled>Concluído</button>`}
+              </div>
+            </div>
+          `).join('') || '<p style="font-size:.85rem; color:var(--ink-soft); padding:.5rem;">Nenhum pedido</p>'}
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('stat-novo').textContent = pedidos.filter((p) => p.status === 'novo').length;
+    document.getElementById('stat-producao').textContent = pedidos.filter((p) => p.status === 'producao').length;
+    document.getElementById('stat-pronto').textContent = pedidos.filter((p) => p.status === 'pronto').length;
+    document.getElementById('stat-total').textContent = formatBRLAdmin(pedidos.reduce((s, p) => s + p.total, 0));
+  }
+
+  function formatBRLAdmin(n) { return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); }
+
+  document.getElementById('kanban').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-avancar]');
+    if (!btn) return;
+    const pedido = pedidos.find((p) => p.id === btn.dataset.avancar);
+    const proxima = proximaColuna(pedido.status);
+    if (proxima) {
+      pedido.status = proxima;
+      render();
+    }
+  });
+
+  render();
+</script>
+</body>
+</html>

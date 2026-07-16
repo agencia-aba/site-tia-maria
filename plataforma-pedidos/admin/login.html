@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo — Tia Maria</title>
+<link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
+<link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
+<link rel="stylesheet" href="/site-tia-maria/plataforma-pedidos/assets/app.css">
+</head>
+<body>
+
+<div class="proto-banner">🧪 <strong>Protótipo</strong> — login simulado (sem autenticação real). Use qualquer e-mail/senha.</div>
+
+<main style="min-height:90vh; display:flex; align-items:center; justify-content:center; padding:2rem;">
+  <div class="card" style="max-width:400px; width:100%; padding:2.5rem;">
+    <div class="text-center" style="margin-bottom:1.5rem;">
+      <img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria" style="height:56px; margin:0 auto 1rem;">
+      <h2 class="mt-0">Painel Administrativo</h2>
+      <p>Gestão de pedidos, inventário e clientes</p>
+    </div>
+    <form id="login-form">
+      <div class="field"><label for="email">E-mail</label><input type="email" id="email" placeholder="voce@tiamaria.com.br" required></div>
+      <div class="field"><label for="senha">Senha</label><input type="password" id="senha" placeholder="••••••••" required></div>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:.5rem;">Entrar</button>
+    </form>
+  </div>
+</main>
+
+<script>
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    window.location.href = 'pedidos.html';
+  });
+</script>
+</body>
+</html>

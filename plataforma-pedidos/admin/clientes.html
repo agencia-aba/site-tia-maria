@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clientes — Painel Tia Maria</title>
+<link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
+<link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
+<link rel="stylesheet" href="/site-tia-maria/plataforma-pedidos/assets/app.css">
+</head>
+<body>
+
+<div class="proto-banner">🧪 <strong>Protótipo</strong> — CRM com dados de exemplo, sem integração real com WhatsApp/e-mail ainda.</div>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a href="/site-tia-maria/index.html" class="brand"><img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria"><span><span class="brand-name">Tia Maria</span><span class="brand-tag">Painel Admin</span></span></a>
+    <nav class="admin-nav">
+      <a href="/site-tia-maria/plataforma-pedidos/admin/pedidos.html"><span class="label-full">📋 Pedidos</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/produtos.html"><span class="label-full">🧁 Produtos</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/clientes.html" class="active"><span class="label-full">👥 Clientes</span></a>
+    </nav>
+    <div class="foot">Logado como admin@tiamaria.com.br<br><a href="/site-tia-maria/plataforma-pedidos/admin/login.html" style="color:#fff">Sair</a></div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>Clientes (CRM)</h1>
+        <div class="subtitle">Histórico de pedidos por cliente para agilizar o atendimento</div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input type="text" class="search-input" placeholder="Buscar cliente..." id="busca-cliente">
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Cliente</th><th>WhatsApp</th><th>Pedidos</th><th>Total gasto</th><th>Último pedido</th><th></th></tr></thead>
+      <tbody id="clientes-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-historico" hidden>
+  <div class="modal" style="max-width:560px">
+    <div class="modal-head"><h3 class="mt-0" id="historico-nome">Histórico</h3><button class="modal-close" id="historico-close">&times;</button></div>
+    <div id="historico-lista"></div>
+  </div>
+</div>
+
+<script src="/site-tia-maria/plataforma-pedidos/assets/data.js"></script>
+<script>
+  function render() {
+    const busca = document.getElementById('busca-cliente').value.toLowerCase();
+    const lista = CLIENTES_EXEMPLO.filter((c) => c.nome.toLowerCase().includes(busca));
+    document.getElementById('clientes-tbody').innerHTML = lista.map((c) => `
+      <tr>
+        <td><strong>${c.nome}</strong></td>
+        <td>${c.telefone}</td>
+        <td>${c.pedidos}</td>
+        <td>${c.totalGasto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+        <td>${c.ultimoPedido}</td>
+        <td class="actions-cell">
+          <button class="icon-btn" title="Ver histórico" data-hist="${c.nome}">🕘</button>
+          <a class="icon-btn" title="WhatsApp" href="https://wa.me/55${c.telefone.replace(/\D/g,'')}" target="_blank" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">💬</a>
+        </td>
+      </tr>
+    `).join('');
+  }
+  document.getElementById('busca-cliente').addEventListener('input', render);
+
+  const modal = document.getElementById('modal-historico');
+  document.getElementById('clientes-tbody').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-hist]');
+    if (!btn) return;
+    const nome = btn.dataset.hist;
+    document.getElementById('historico-nome').textContent = 'Histórico — ' + nome;
+    const pedidosDoCliente = PEDIDOS_EXEMPLO.filter((p) => p.cliente === nome);
+    document.getElementById('historico-lista').innerHTML = pedidosDoCliente.map((p) => `
+      <div class="cart-line">
+        <span>${p.data} — ${p.itens}</span>
+        <span>${p.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+      </div>
+    `).join('') || '<p>Nenhum pedido encontrado.</p>';
+    modal.hidden = false;
+  });
+  document.getElementById('historico-close').addEventListener('click', () => { modal.hidden = true; });
+
+  render();
+</script>
+</body>
+</html>
