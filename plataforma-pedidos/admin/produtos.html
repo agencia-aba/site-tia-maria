@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<script>if(!sessionStorage.getItem("tm_admin_session")){location.replace("login.html");}</script>
 <title>Produtos — Painel Tia Maria</title>
 <link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
 <link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
@@ -14,11 +16,12 @@
 
 <div class="admin-shell">
   <aside class="admin-sidebar">
-    <a href="/site-tia-maria/index.html" class="brand"><img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria"><span><span class="brand-name">Tia Maria</span><span class="brand-tag">Painel Admin</span></span></a>
+    <a href="/site-tia-maria/" class="brand"><img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria"><span><span class="brand-name">Tia Maria</span><span class="brand-tag">Painel Admin</span></span></a>
     <nav class="admin-nav">
       <a href="/site-tia-maria/plataforma-pedidos/admin/pedidos.html"><span class="label-full">📋 Pedidos</span></a>
       <a href="/site-tia-maria/plataforma-pedidos/admin/produtos.html" class="active"><span class="label-full">🧁 Produtos</span></a>
       <a href="/site-tia-maria/plataforma-pedidos/admin/clientes.html"><span class="label-full">👥 Clientes</span></a>
+      <a href="/site-tia-maria/plataforma-pedidos/admin/novidades.html"><span class="label-full">🖼️ Novidades</span></a>
     </nav>
     <div class="foot">Logado como admin@tiamaria.com.br<br><a href="/site-tia-maria/plataforma-pedidos/admin/login.html" style="color:#fff">Sair</a></div>
   </aside>
@@ -29,7 +32,10 @@
         <h1>Inventário de Produtos</h1>
         <div class="subtitle">Categorize como Pronta Entrega (estoque) ou Sob Encomenda (com prazo de produção)</div>
       </div>
-      <button class="btn btn-primary btn-sm" id="btn-novo">+ Novo produto</button>
+      <div style="display:flex; gap:.6rem;">
+        <button class="btn btn-outline btn-sm" id="btn-reajuste">% Reajustar preços</button>
+        <button class="btn btn-primary btn-sm" id="btn-novo">+ Novo produto</button>
+      </div>
     </div>
 
     <div class="toolbar">
@@ -67,6 +73,30 @@
       </div>
       <div class="field" id="f-leadtime-field"><label>Prazo de produção (dias)</label><input type="number" id="f-leadtime" min="0"></div>
       <button type="submit" class="btn btn-primary" style="width:100%">Salvar produto</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-reajuste" hidden>
+  <div class="modal">
+    <div class="modal-head"><h3 class="mt-0">Reajustar preços por categoria</h3><button class="modal-close" id="modal-reajuste-close">&times;</button></div>
+    <p class="field-hint">O percentual é aplicado sobre o preço atual de todos os produtos da categoria escolhida. Os novos preços são sempre arredondados para cima, sem centavos.</p>
+    <form id="form-reajuste">
+      <div class="field">
+        <label>Categoria</label>
+        <select id="r-categoria">
+          <option value="Bolos">Bolos</option>
+          <option value="Salgados">Salgados</option>
+          <option value="Docinhos">Docinhos</option>
+          <option value="Kits Festa">Kits Festa</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Percentual de reajuste (%)</label>
+        <input type="number" id="r-percentual" step="0.1" placeholder="Ex: 5 para +5%, -3 para -3%" required>
+      </div>
+      <div id="r-preview" class="field-hint" style="margin-bottom:1rem"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Aplicar reajuste</button>
     </form>
   </div>
 </div>
@@ -117,6 +147,56 @@
   const modal = document.getElementById('modal');
   document.getElementById('btn-novo').addEventListener('click', () => { modal.hidden = false; });
   document.getElementById('modal-close').addEventListener('click', () => { modal.hidden = true; });
+
+  // ---------- Reajuste de preços por categoria ----------
+  const modalReajuste = document.getElementById('modal-reajuste');
+  const rCategoria = document.getElementById('r-categoria');
+  const rPercentual = document.getElementById('r-percentual');
+  const rPreview = document.getElementById('r-preview');
+
+  function updateReajustePreview() {
+    const cat = rCategoria.value;
+    const pct = parseFloat(rPercentual.value);
+    const afetados = produtos.filter((p) => p.categoria === cat);
+    if (!pct || isNaN(pct)) {
+      rPreview.textContent = `${afetados.length} produto(s) na categoria "${cat}".`;
+      return;
+    }
+    const exemplo = afetados[0];
+    let texto = `${afetados.length} produto(s) na categoria "${cat}" serão reajustados em ${pct > 0 ? '+' : ''}${pct}%.`;
+    if (exemplo) {
+      const novoPreco = Math.ceil(exemplo.preco * (1 + pct / 100));
+      texto += ` Exemplo: "${exemplo.nome}" vai de ${exemplo.preco.toLocaleString('pt-BR', {style:'currency',currency:'BRL'})} para ${novoPreco.toLocaleString('pt-BR', {style:'currency',currency:'BRL'})}.`;
+    }
+    rPreview.textContent = texto;
+  }
+
+  document.getElementById('btn-reajuste').addEventListener('click', () => {
+    modalReajuste.hidden = false;
+    updateReajustePreview();
+  });
+  document.getElementById('modal-reajuste-close').addEventListener('click', () => { modalReajuste.hidden = true; });
+  rCategoria.addEventListener('change', updateReajustePreview);
+  rPercentual.addEventListener('input', updateReajustePreview);
+
+  document.getElementById('form-reajuste').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cat = rCategoria.value;
+    const pct = parseFloat(rPercentual.value);
+    if (isNaN(pct)) return;
+    let count = 0;
+    produtos = produtos.map((p) => {
+      if (p.categoria !== cat) return p;
+      count++;
+      // Arredonda sempre para cima, sem centavos (ex: R$83,20 -> R$84,00)
+      const novoPreco = Math.ceil(p.preco * (1 + pct / 100));
+      return { ...p, preco: novoPreco };
+    });
+    modalReajuste.hidden = true;
+    e.target.reset();
+    render();
+    alert(`Reajuste de ${pct > 0 ? '+' : ''}${pct}% aplicado a ${count} produto(s) da categoria "${cat}".`);
+  });
   document.getElementById('f-estoque').addEventListener('change', (e) => {
     document.getElementById('f-leadtime-field').style.display = e.target.value === 'encomenda' ? 'flex' : 'none';
   });

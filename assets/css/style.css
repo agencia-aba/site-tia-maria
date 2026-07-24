@@ -164,8 +164,9 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 }
 .main-nav a:hover::after, .main-nav li.active a::after{ width: 100%; }
 .has-sub{ position: relative; }
-.has-sub > a{ display:flex; align-items:center; gap:.35em; }
-.has-sub > a::after{ content:''; width:7px; height:7px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform: rotate(45deg) translateY(-2px); display:inline-block; margin-left:.1em; background:none !important; position:static; }
+.has-sub > a{ display:flex; align-items:center; gap:.3em; }
+.nav-chevron{ width:13px; height:13px; flex-shrink:0; transition: transform .18s ease; }
+.has-sub:hover .nav-chevron, .has-sub:focus-within .nav-chevron, .has-sub.open .nav-chevron{ transform: rotate(180deg); }
 .sub-nav{
   position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
   background: var(--paper); border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1px solid var(--line);
@@ -263,6 +264,16 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 }
 .hero-badge strong{ display:block; font-family: var(--font-display); font-size: 1.4rem; color: var(--terracotta); }
 .hero-badge span{ font-size: .8rem; color: var(--ink-soft); }
+
+.novidades-eyebrow{ display:block; margin-bottom: var(--space-2); }
+.novidades-widget .frame img{ transition: opacity .3s ease; }
+.novidades-caption{ margin: .8rem 0 0; font-size: .88rem; color: var(--ink-soft); text-align: center; }
+.novidades-dots{ display:flex; justify-content:center; gap:.45rem; margin-top:.6rem; }
+.novidades-dots button{
+  width:8px; height:8px; border-radius:50%; border:none; padding:0; cursor:pointer;
+  background: var(--terracotta-l);
+}
+.novidades-dots button.active{ background: var(--terracotta); }
 
 /* =========== Category / product cards =========== */
 .grid{ display: grid; gap: var(--space-3); }
@@ -437,6 +448,35 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 .photo-strip a{ scroll-snap-align:start; border-radius: var(--radius-sm); overflow:hidden; aspect-ratio: 3/4; box-shadow: var(--shadow-sm); }
 .photo-strip img{ width:100%; height:100%; object-fit:cover; }
 
+/* =========== Avaliações Google =========== */
+.reviews-head{ display:flex; align-items:center; gap: var(--space-2); flex-wrap:wrap; margin-bottom: var(--space-2); }
+.reviews-score{ display:flex; align-items:center; gap:.6rem; }
+.reviews-score .num{ font-family: var(--font-display); font-size:2.2rem; color: var(--terracotta-d); }
+.reviews-stars{ color:#F5A623; display:flex; gap:.1rem; }
+.reviews-stars svg{ width:16px; height:16px; }
+.review-card{ background:var(--paper); border-radius: var(--radius-md); padding: var(--space-3); box-shadow: var(--shadow-sm); display:flex; flex-direction:column; gap:.6rem; }
+.review-card .stars{ color:#F5A623; display:flex; gap:.1rem; }
+.review-card .stars svg{ width:15px; height:15px; }
+.review-card p{ margin:0; color: var(--ink); font-size:.92rem; line-height:1.55; }
+.review-card .author{ display:flex; align-items:center; gap:.6rem; margin-top:auto; padding-top:.4rem; }
+.review-card .avatar{ width:34px; height:34px; border-radius:50%; background: var(--terracotta-l); color: var(--terracotta-d); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; flex-shrink:0; }
+.review-card .author-name{ font-weight:700; font-size:.85rem; }
+.review-card .google-badge{ font-size:.72rem; color: var(--ink-soft); }
+
+/* =========== Instagram CTA =========== */
+.insta-band{
+  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 55%, #6228d7 100%);
+  border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5);
+  display:flex; align-items:center; justify-content:space-between; gap: var(--space-4); flex-wrap:wrap; color:#fff;
+}
+.insta-band .insta-icon{ width:56px; height:56px; border-radius:16px; background:rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.insta-band .insta-icon svg{ width:30px; height:30px; color:#fff; }
+.insta-band-text{ display:flex; align-items:center; gap: var(--space-3); }
+.insta-band h3{ color:#fff; margin-bottom:.15em; }
+.insta-band .handle{ font-weight:700; opacity:.95; }
+.insta-band p{ color:rgba(255,255,255,.9); margin:0; }
+.insta-band .btn-light:hover{ transform: translateY(-2px) scale(1.03); }
+
 /* =========== CTA banda =========== */
 .cta-band{
   background: var(--ink); color: var(--cream);
@@ -521,11 +561,10 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
   .main-nav ul{ flex-direction:column; align-items:flex-start; width:100%; gap: 0; }
   .main-nav li{ width:100%; border-bottom:1px solid var(--line); }
   .main-nav a{ display:block; padding: 1em 0; }
-  .has-sub > a::after{ margin-left:auto; }
-  .has-sub > a{ justify-content:space-between; }
+  .has-sub > a{ display:flex; justify-content:space-between; }
+  .nav-chevron{ margin-left:auto; }
   .sub-nav{ position:static; opacity:1; visibility:visible; pointer-events:none; box-shadow:none; border:none; transform:none; display:none; padding: 0 0 .5rem var(--space-2); min-width:0; }
   .has-sub.open .sub-nav{ display:flex; pointer-events:auto; }
-  .has-sub.open > a::after{ transform: rotate(225deg) translate(2px,1px); }
   .nav-toggle{ display:flex; }
   .search-toggle .label{ display:none; }
   .search-toggle{ width:44px; height:44px; padding:0; justify-content:center; }
