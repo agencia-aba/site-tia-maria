@@ -1,0 +1,8 @@
+# Arquivos que o Cloudflare NÃO deve publicar como parte do site
+# (isso é diferente do .gitignore — controla o que sobe no deploy, não o que o git rastreia)
+.git
+.gitignore
+.assetsignore
+.claude
+.nojekyll
+node_modules
