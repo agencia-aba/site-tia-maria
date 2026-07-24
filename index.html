@@ -61,6 +61,7 @@
             <li><a href="/site-tia-maria/kits-festa/em-casa/" data-kit="casa"><span class="sub-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Em Casa</a></li>
             <li><a href="/site-tia-maria/kits-festa/na-escola/" data-kit="escola"><span class="sub-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span>Na Escola</a></li>
             <li><a href="/site-tia-maria/kits-festa/no-escritorio/" data-kit="escritorio"><span class="sub-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>No Escritório</a></li>
+            <li class="sub-nav-footer-item"><a href="/site-tia-maria/kits-festa/">Ver todos em Kits Festa<svg class="sub-nav-footer-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a></li>
           </ul>
         </li>
       </ul>
@@ -88,6 +89,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg" style="background-image:url('/site-tia-maria/assets/images/hero-bg.jpg')"></div>
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Desde 1992 em Jandira</span>
@@ -97,6 +99,10 @@
           <a href="/site-tia-maria/bolos/" class="btn btn-primary">Ver cardápio de bolos</a>
           <a href="https://wa.me/5511947207019?text=Ol%C3%A1%2C%20estou%20no%20seu%20site%2C%20meu%20nome%20%C3%A9%20" class="btn btn-outline" target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
+        <div class="hero-trust">
+          <strong>34+</strong>
+          <span>anos de tradição e sabor artesanal em Jandira</span>
+        </div>
       </div>
       <div class="hero-media novidades-widget" id="novidades-widget">
         <div class="novidades-head">
@@ -105,11 +111,11 @@
             Novidades
           </span>
           <span class="novidades-subtitle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            Fotos e lançamentos recentes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Novidade de hoje, <span id="novidades-date-text"></span>.
           </span>
         </div>
-        <div class="frame">
+        <div class="frame" id="novidades-frame" role="button" tabindex="0" aria-label="Ver novidade em tela cheia">
           <div class="novidades-progress" id="novidades-progress"></div>
           <button class="novidades-toggle" id="novidades-toggle" type="button" aria-label="Pausar apresentação">
             <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
@@ -118,13 +124,20 @@
           <img id="novidades-img" src="" alt="" loading="eager">
         </div>
         <p class="novidades-caption" id="novidades-caption"></p>
-        <div class="hero-badge">
-          <strong>30+ anos</strong>
-          <span>de tradição e sabor artesanal em Jandira</span>
-        </div>
       </div>
     </div>
   </section>
+
+  <div class="novidades-lightbox" id="novidades-lightbox" hidden>
+    <button class="novidades-lb-close" id="novidades-lb-close" aria-label="Fechar">&times;</button>
+    <button class="novidades-lb-nav novidades-lb-prev" id="novidades-lb-prev" aria-label="Anterior">&#8249;</button>
+    <img class="novidades-lb-img" id="novidades-lb-img" src="" alt="">
+    <button class="novidades-lb-nav novidades-lb-next" id="novidades-lb-next" aria-label="Próxima">&#8250;</button>
+    <a class="novidades-lb-whatsapp" id="novidades-lb-whatsapp" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1 .08-1.62-.1-.37-.11-.85-.27-1.46-.53-2.57-1.11-4.25-3.7-4.38-3.87-.13-.17-1.05-1.4-1.05-2.67 0-1.27.67-1.9.9-2.16.23-.26.5-.32.67-.32.17 0 .34 0 .49.01.16.01.37-.06.58.44.22.52.74 1.8.8 1.93.06.13.1.28.02.45-.08.17-.13.28-.25.43-.13.15-.27.34-.38.45-.13.13-.26.27-.11.53.15.26.68 1.12 1.46 1.81 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.07.15-.17.64-.75.81-1 .17-.26.34-.21.57-.13.23.09 1.47.69 1.72.82.26.13.43.19.49.3.06.11.06.62-.16 1.24z"/></svg>
+      Pedir esta novidade
+    </a>
+  </div>
 
   <!-- CATEGORIAS -->
   <section class="section section--tight">
@@ -382,8 +395,9 @@
   </div>
 </footer>
 
-<a class="float-whatsapp" href="https://wa.me/5511947207019?text=Ol%C3%A1%2C%20estou%20no%20seu%20site%2C%20meu%20nome%20%C3%A9%20" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="float-whatsapp" href="https://wa.me/5511947207019?text=Ol%C3%A1%2C%20estou%20no%20seu%20site%2C%20meu%20nome%20%C3%A9%20" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1 .08-1.62-.1-.37-.11-.85-.27-1.46-.53-2.57-1.11-4.25-3.7-4.38-3.87-.13-.17-1.05-1.4-1.05-2.67 0-1.27.67-1.9.9-2.16.23-.26.5-.32.67-.32.17 0 .34 0 .49.01.16.01.37-.06.58.44.22.52.74 1.8.8 1.93.06.13.1.28.02.45-.08.17-.13.28-.25.43-.13.15-.27.34-.38.45-.13.13-.26.27-.11.53.15.26.68 1.12 1.46 1.81 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.07.15-.17.64-.75.81-1 .17-.26.34-.21.57-.13.23.09 1.47.69 1.72.82.26.13.43.19.49.3.06.11.06.62-.16 1.24z"/></svg>
+  <span class="float-whatsapp-label">Falar no WhatsApp</span>
 </a>
 
 <script src="/site-tia-maria/assets/js/search-data.js"></script>
@@ -397,8 +411,13 @@
   var caption = document.getElementById('novidades-caption');
   var progress = document.getElementById('novidades-progress');
   var toggleBtn = document.getElementById('novidades-toggle');
+  var frame = document.getElementById('novidades-frame');
+  var dateText = document.getElementById('novidades-date-text');
   var DURATION = 3000, STEP = 50;
-  var i = 0, elapsed = 0, paused = false, tickTimer;
+  var i = 0, elapsed = 0, paused = false;
+
+  var hoje = new Date();
+  dateText.textContent = hoje.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
 
   progress.innerHTML = lista.map(function(){ return '<span class="seg"><i class="fill"></i></span>'; }).join('');
   var segs = Array.from(progress.children);
@@ -433,20 +452,53 @@
     if (elapsed >= DURATION) show(i + 1);
   }
 
-  segs.forEach(function(seg, idx){
-    seg.addEventListener('click', function(){ show(idx); });
-  });
-
-  toggleBtn.addEventListener('click', function(){
-    paused = !paused;
+  function setPaused(v){
+    paused = v;
     toggleBtn.classList.toggle('is-paused', paused);
     toggleBtn.querySelector('.icon-pause').hidden = paused;
     toggleBtn.querySelector('.icon-play').hidden = !paused;
     toggleBtn.setAttribute('aria-label', paused ? 'Continuar apresentação' : 'Pausar apresentação');
+  }
+
+  segs.forEach(function(seg, idx){
+    seg.addEventListener('click', function(e){ e.stopPropagation(); show(idx); });
+  });
+
+  toggleBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    setPaused(!paused);
   });
 
   show(0);
-  if (lista.length > 1) tickTimer = setInterval(tick, STEP);
+  if (lista.length > 1) setInterval(tick, STEP);
+
+  // ---------- Lightbox em tela cheia (mobile e desktop) ----------
+  var lightbox = document.getElementById('novidades-lightbox');
+  var lbImg = document.getElementById('novidades-lb-img');
+  var lbWhats = document.getElementById('novidades-lb-whatsapp');
+  var lbIndex = 0;
+
+  function openLightbox(idx){
+    lbIndex = (idx + lista.length) % lista.length;
+    var item = lista[lbIndex];
+    lbImg.src = item.img;
+    lbImg.alt = item.alt || '';
+    var linkFoto = location.origin + item.img;
+    var texto = 'Olá! Tenho interesse nesta novidade' + (item.legenda ? (': "' + item.legenda + '"') : '') + '. ' + linkFoto + ' Meu nome é ';
+    lbWhats.href = 'https://wa.me/5511947207019?text=' + encodeURIComponent(texto);
+    setPaused(true);
+    lightbox.hidden = false;
+  }
+
+  frame.addEventListener('click', function(){ openLightbox(i); });
+  frame.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+  });
+
+  document.getElementById('novidades-lb-prev').addEventListener('click', function(){ openLightbox(lbIndex - 1); });
+  document.getElementById('novidades-lb-next').addEventListener('click', function(){ openLightbox(lbIndex + 1); });
+  document.getElementById('novidades-lb-close').addEventListener('click', function(){ lightbox.hidden = true; });
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox) lightbox.hidden = true; });
 })();
 </script>
 </body>

@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key !== 'Escape') return;
     document.querySelectorAll('.modal-backdrop:not([hidden])').forEach((b) => { b.hidden = true; });
     document.querySelectorAll('.lightbox:not([hidden])').forEach((b) => { b.hidden = true; });
+    document.querySelectorAll('.novidades-lightbox:not([hidden])').forEach((b) => { b.hidden = true; });
     closeAllSubmenus();
   });
 
