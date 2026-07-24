@@ -3,10 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.main-nav');
 
+  function closeAllSubmenus() {
+    document.querySelectorAll('.has-sub.open').forEach((li) => {
+      li.classList.remove('open');
+      const chevronBtn = li.querySelector('.nav-chevron-btn');
+      if (chevronBtn) chevronBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('is-open');
-      toggle.classList.toggle('is-active');
+      const willOpen = !nav.classList.contains('is-open');
+      nav.classList.toggle('is-open', willOpen);
+      toggle.classList.toggle('is-active', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+      document.body.classList.toggle('nav-open-lock', willOpen);
+      if (!willOpen) closeAllSubmenus();
     });
   }
 
@@ -20,14 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       chevronBtn.setAttribute('aria-expanded', String(isOpen));
     });
   });
-
-  function closeAllSubmenus() {
-    document.querySelectorAll('.has-sub.open').forEach((li) => {
-      li.classList.remove('open');
-      const chevronBtn = li.querySelector('.nav-chevron-btn');
-      if (chevronBtn) chevronBtn.setAttribute('aria-expanded', 'false');
-    });
-  }
 
   document.addEventListener('click', (e) => {
     document.querySelectorAll('.has-sub.open').forEach((li) => {
