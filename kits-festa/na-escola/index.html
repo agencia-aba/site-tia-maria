@@ -24,6 +24,7 @@
   .kit-media-dots{ position:absolute; bottom:.7rem; left:50%; transform:translateX(-50%); display:flex; gap:.35rem; z-index:2; }
   .kit-media-dots span{ width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.55); display:block; }
   .kit-media-dots span.active{ background:#fff; }
+  .kit-media::after{ content:"Clique para ampliar"; position:absolute; bottom:.6rem; right:.6rem; z-index:3; background:rgba(0,0,0,.55); color:#fff; font-size:.68rem; font-weight:600; padding:.3em .7em; border-radius:999px; pointer-events:none; }
   /* Preço + pedido em destaque */
   .kit-order-row{ display:flex; gap:.8rem; margin-top:var(--space-3); flex-wrap:wrap; }
   .kit-price-box, .kit-order-box{ flex:1; min-width:190px; display:flex; align-items:center; gap:.7rem; padding:.9rem 1.1rem; border-radius:var(--radius-md); }

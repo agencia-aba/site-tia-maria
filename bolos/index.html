@@ -205,10 +205,8 @@
 <script src="/site-tia-maria/assets/js/search-data.js"></script>
 <script src="/site-tia-maria/assets/js/main.js"></script>
 <script>
-const TRAD_IMAGES = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16].map(n => `/site-tia-maria/assets/images/bolo-tradicional/05-2022/bolos-tradicionais${n}.jpg`);
 const ESPECIAL_IMAGES = Array.from({length:4}, (_, i) => `/site-tia-maria/assets/images/bolos-especiais/bolo-especial-${String(i+1).padStart(2,'0')}.jpg`);
 const PERSONALIZADO_IMAGES = Array.from({length:12}, (_, i) => `/site-tia-maria/assets/images/bolos-personalizados/bolo-personalizado-${String(i+1).padStart(2,'0')}.jpg`);
-const TOPO_IMAGES = Array.from({length:11}, (_, i) => `/site-tia-maria/assets/images/bolos-topo/topo${i+1}a.jpg`);
 
 const BOLOS = {
   tipos: [
@@ -425,10 +423,8 @@ document.getElementById('flavor-list').addEventListener('click', (e) => {
 
 // ---------- Galeria + Lightbox ----------
 const GALERIA = [
-  { titulo: 'Decoração Tradicional', imgs: TRAD_IMAGES },
   { titulo: 'Decoração Especial', imgs: ESPECIAL_IMAGES },
   { titulo: 'Decoração Personalizada', imgs: PERSONALIZADO_IMAGES },
-  { titulo: 'Topo de Bolo', imgs: TOPO_IMAGES },
 ];
 const TODAS_IMAGENS = GALERIA.flatMap((g) => g.imgs);
 

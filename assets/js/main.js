@@ -118,6 +118,41 @@ document.addEventListener('DOMContentLoaded', () => {
     closeAllSubmenus();
   });
 
+  // ---------- Lightbox: setas do teclado, arrastar (touch) e dica de navegação ----------
+  function wireLightboxNav(selector, prevSel, nextSel) {
+    document.querySelectorAll(selector).forEach((lb) => {
+      const prevBtn = lb.querySelector(prevSel);
+      const nextBtn = lb.querySelector(nextSel);
+      if (!prevBtn || !nextBtn) return;
+
+      if (!lb.querySelector('.lightbox-hint')) {
+        const hint = document.createElement('div');
+        hint.className = 'lightbox-hint';
+        hint.textContent = 'Use as setas ← → ou arraste para ver mais fotos';
+        lb.appendChild(hint);
+      }
+
+      let touchStartX = null;
+      lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', (e) => {
+        if (touchStartX === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) (dx > 0 ? prevBtn : nextBtn).click();
+        touchStartX = null;
+      }, { passive: true });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const open = document.querySelector(`${selector}:not([hidden])`);
+      if (!open) return;
+      const btn = open.querySelector(e.key === 'ArrowLeft' ? prevSel : nextSel);
+      if (btn) btn.click();
+    });
+  }
+  wireLightboxNav('.lightbox', '.lightbox-prev', '.lightbox-next');
+  wireLightboxNav('.novidades-lightbox', '.novidades-lb-prev', '.novidades-lb-next');
+
   // ---------- Highlight ao chegar via âncora (ex: busca ou link direto) ----------
   if (window.location.hash) {
     try {
