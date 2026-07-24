@@ -7,7 +7,7 @@
 <title>Painel Administrativo — Tia Maria</title>
 <link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
 <link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
-<link rel="stylesheet" href="/site-tia-maria/plataforma-pedidos/assets/app.css">
+<link rel="stylesheet" href="/site-tia-maria/admin/assets/admin.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
     <div class="text-center" style="margin-bottom:1.5rem;">
       <img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria" style="height:56px; margin:0 auto 1rem;">
       <h2 class="mt-0">Painel Administrativo</h2>
-      <p>Gestão de pedidos, inventário e clientes</p>
+      <p>Gerencie as imagens de Novidades da home</p>
     </div>
     <form id="login-form">
       <div class="field"><label for="email">E-mail</label><input type="email" id="email" placeholder="voce@tiamaria.com.br" required></div>
@@ -34,7 +34,7 @@
     // Sessão apenas para evitar acesso casual direto às páginas do admin sem passar pelo login.
     // NÃO é autenticação real — não protege contra alguém que conheça a URL e o funcionamento.
     sessionStorage.setItem('tm_admin_session', '1');
-    window.location.href = 'pedidos.html';
+    window.location.href = 'novidades.html';
   });
 </script>
 </body>

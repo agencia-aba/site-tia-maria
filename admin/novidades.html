@@ -8,7 +8,7 @@
 <title>Novidades — Painel Tia Maria</title>
 <link rel="icon" href="/site-tia-maria/assets/images/logo-site.png">
 <link rel="stylesheet" href="/site-tia-maria/assets/css/style.css">
-<link rel="stylesheet" href="/site-tia-maria/plataforma-pedidos/assets/app.css">
+<link rel="stylesheet" href="/site-tia-maria/admin/assets/admin.css">
 <style>
   .nov-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items:start; }
   .nov-card{ background:var(--paper); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:var(--space-3); }
@@ -19,7 +19,7 @@
   .nov-list-item .info strong{ display:block; font-size:.85rem; }
   .nov-list-item .info span{ font-size:.78rem; color:var(--ink-soft); }
   .nov-actions{ display:flex; gap:.3rem; }
-  .nov-preview{ width:100%; max-width:220px; aspect-ratio:4/5; object-fit:cover; border-radius:var(--radius-md); background:var(--cream-deep); margin:0 auto; display:block; }
+  .nov-preview{ width:100%; max-width:160px; aspect-ratio:9/16; object-fit:cover; border-radius:var(--radius-md); background:var(--cream-deep); margin:0 auto; display:block; }
   .nov-check{ font-size:.82rem; padding:.5rem .7rem; border-radius:8px; margin-top:.6rem; }
   .nov-check.ok{ background:#E4F3E6; color:#2C7A39; }
   .nov-check.warn{ background:#FDECD8; color:#B5651D; }
@@ -35,12 +35,9 @@
   <aside class="admin-sidebar">
     <a href="/site-tia-maria/" class="brand"><img src="/site-tia-maria/assets/images/logo-site.png" alt="Tia Maria"><span><span class="brand-name">Tia Maria</span><span class="brand-tag">Painel Admin</span></span></a>
     <nav class="admin-nav">
-      <a href="/site-tia-maria/plataforma-pedidos/admin/pedidos.html"><span class="label-full">📋 Pedidos</span></a>
-      <a href="/site-tia-maria/plataforma-pedidos/admin/produtos.html"><span class="label-full">🧁 Produtos</span></a>
-      <a href="/site-tia-maria/plataforma-pedidos/admin/clientes.html"><span class="label-full">👥 Clientes</span></a>
-      <a href="/site-tia-maria/plataforma-pedidos/admin/novidades.html" class="active"><span class="label-full">🖼️ Novidades</span></a>
+      <a href="/site-tia-maria/admin/novidades.html" class="active"><span class="label-full">🖼️ Novidades</span></a>
     </nav>
-    <div class="foot">Logado como admin@tiamaria.com.br<br><a href="/site-tia-maria/plataforma-pedidos/admin/login.html" style="color:#fff">Sair</a></div>
+    <div class="foot">Logado como admin@tiamaria.com.br<br><a href="/site-tia-maria/admin/login.html" style="color:#fff">Sair</a></div>
   </aside>
 
   <div class="admin-main">
@@ -60,8 +57,8 @@
       <div class="nov-card">
         <h3 class="mt-0">Adicionar nova imagem</h3>
         <p class="field-hint" style="margin-bottom:1rem">
-          Formato recomendado: <strong>retrato 4:5</strong> (ex: 900 × 1125px), até <strong>500KB</strong>, em JPG ou WEBP.
-          Fotos muito largas ou muito grandes ficam cortadas ou deixam o site lento.
+          Formato recomendado: <strong>1080 × 1920px</strong> (retrato 9:16, o mesmo formato de Stories), até <strong>800KB</strong>, em JPG ou WEBP.
+          É a mesma imagem usada no computador e no celular — no site ela aparece cortada num quadro menor, mas ao clicar abre inteira em tela cheia.
         </p>
         <div class="field">
           <label>Arquivo da imagem</label>
@@ -161,12 +158,12 @@
         fPreview.src = novoArquivoDataUrl;
         fPreview.hidden = false;
         const ratio = img.width / img.height;
-        const alvo = 4 / 5;
-        const dentroProporcao = Math.abs(ratio - alvo) < 0.12;
+        const alvo = 9 / 16;
+        const dentroProporcao = Math.abs(ratio - alvo) < 0.08;
         const tamanhoKb = Math.round(file.size / 1024);
         const avisos = [];
-        if (!dentroProporcao) avisos.push(`proporção ${img.width}×${img.height} foge do formato retrato 4:5 recomendado`);
-        if (tamanhoKb > 500) avisos.push(`arquivo com ${tamanhoKb}KB, acima dos 500KB recomendados`);
+        if (!dentroProporcao) avisos.push(`proporção ${img.width}×${img.height} foge do formato retrato 9:16 (1080×1920) recomendado`);
+        if (tamanhoKb > 800) avisos.push(`arquivo com ${tamanhoKb}KB, acima dos 800KB recomendados`);
         if (avisos.length) {
           fCheck.innerHTML = `<div class="nov-check warn">⚠️ ${avisos.join('; ')}. Pode usar, mas o ideal é ajustar.</div>`;
         } else {
