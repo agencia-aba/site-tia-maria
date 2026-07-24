@@ -22,6 +22,9 @@
   .extras-row{ display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-3); margin-top:var(--space-3); }
   .extra-card{ display:flex; gap:1rem; background:var(--paper); border-radius:var(--radius-md); padding:var(--space-3); box-shadow:var(--shadow-sm); align-items:center; }
   .extra-card img{ width:84px; height:84px; object-fit:cover; border-radius:var(--radius-sm); flex-shrink:0; }
+  .bolo-builder{ display:grid; grid-template-columns: .85fr .85fr 1.3fr; gap: var(--space-4); align-items:start; }
+  .bolo-builder-col .grid{ grid-template-columns:1fr; gap:.7rem; }
+  @media (max-width:980px){ .bolo-builder{ grid-template-columns:1fr; } }
   @media (max-width:760px){ .extras-row{ grid-template-columns:1fr; } }
 </style>
 </head>
@@ -79,21 +82,29 @@
 
       <div class="mini-stepper" id="mini-stepper"></div>
 
-      <div class="section-head" style="margin-bottom:1rem">
-        <h2 style="font-size:1.4rem">1. Escolha o tipo</h2>
-      </div>
-      <div class="grid grid-2" id="tipo-cards" style="margin-bottom:var(--space-4)"></div>
+      <div class="bolo-builder">
+        <div class="bolo-builder-col">
+          <div class="section-head" style="margin-bottom:1rem">
+            <h2 style="font-size:1.4rem">1. Escolha o tipo</h2>
+          </div>
+          <div class="grid" id="tipo-cards"></div>
+        </div>
 
-      <div class="section-head" style="margin-bottom:1rem">
-        <h2 style="font-size:1.4rem">2. Escolha a massa</h2>
-      </div>
-      <div class="grid grid-2" id="massa-cards" style="margin-bottom:var(--space-4)"></div>
+        <div class="bolo-builder-col">
+          <div class="section-head" style="margin-bottom:1rem">
+            <h2 style="font-size:1.4rem">2. Escolha a massa</h2>
+          </div>
+          <div class="grid" id="massa-cards"></div>
+        </div>
 
-      <div class="section-head" style="margin-bottom:1rem">
-        <h2 style="font-size:1.4rem">3. Escolha o sabor</h2>
-        <p>Toque em um sabor para ver os tamanhos, preços e pedir direto no WhatsApp.</p>
+        <div class="bolo-builder-col">
+          <div class="section-head" style="margin-bottom:1rem">
+            <h2 style="font-size:1.4rem">3. Escolha o sabor</h2>
+            <p>Toque em um sabor para ver os tamanhos, preços e pedir direto no WhatsApp.</p>
+          </div>
+          <div id="flavor-list" class="flavor-list"></div>
+        </div>
       </div>
-      <div id="flavor-list" class="flavor-list"></div>
 
       <div class="section-head" style="margin-top:var(--space-5)" id="adicionais">
         <span class="eyebrow">Adicionais</span>
@@ -196,15 +207,14 @@
 <script src="/site-tia-maria/assets/js/main.js"></script>
 <script>
 const TRAD_IMAGES = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16].map(n => `/site-tia-maria/assets/images/bolo-tradicional/05-2022/bolos-tradicionais${n}.jpg`);
-const ESPECIAL_IMAGES = [1,3,4,6,7,8].map(n => `/site-tia-maria/assets/images/especiais-05-2022/decoracao-especial-0${n}.jpg`);
-const PERSONALIZADO_IMAGES = Array.from({length:38}, (_, i) => `/site-tia-maria/assets/images/bolos-personalizados/05-2022/personalizado${i+1}a.jpg`);
+const ESPECIAL_IMAGES = Array.from({length:4}, (_, i) => `/site-tia-maria/assets/images/bolos-especiais/bolo-especial-${String(i+1).padStart(2,'0')}.jpg`);
+const PERSONALIZADO_IMAGES = Array.from({length:12}, (_, i) => `/site-tia-maria/assets/images/bolos-personalizados/bolo-personalizado-${String(i+1).padStart(2,'0')}.jpg`);
 const TOPO_IMAGES = Array.from({length:11}, (_, i) => `/site-tia-maria/assets/images/bolos-topo/topo${i+1}a.jpg`);
 
 const BOLOS = {
   tipos: [
     {
       nome: "Decoração Tradicional", precoBase: 77, serveAte: 10,
-      img: "/site-tia-maria/assets/images/tradicionais-principal.jpg",
       massas: [
         {
           nome: "Massa Branca",
@@ -253,7 +263,6 @@ const BOLOS = {
     },
     {
       nome: "Decoração Personalizada", precoBase: 126, serveAte: 5,
-      img: "/site-tia-maria/assets/images/bolos-personalizados-principal.jpg",
       massas: [
         {
           nome: "Massa Branca",
@@ -304,8 +313,7 @@ function renderMiniStepper() {
 
 function renderTipoCards() {
   document.getElementById('tipo-cards').innerHTML = BOLOS.tipos.map((t, i) => `
-    <div class="card selectable-card ${i === tipoAtual ? 'is-selected' : ''}" data-tipo="${i}">
-      <div class="card-media"><img src="${t.img}" alt="${t.nome}" loading="lazy"></div>
+    <div class="card selectable-card massa-card-text ${i === tipoAtual ? 'is-selected' : ''}" data-tipo="${i}">
       <div class="card-body">
         <div>
           <h3 style="margin-bottom:.2rem">${t.nome}</h3>

@@ -110,10 +110,6 @@
             <svg class="novidades-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/></svg>
             Novidades
           </span>
-          <span class="novidades-subtitle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Novidade de hoje, <span id="novidades-date-text"></span>.
-          </span>
         </div>
         <div class="frame" id="novidades-frame" role="button" tabindex="0" aria-label="Ver novidade em tela cheia">
           <div class="novidades-progress" id="novidades-progress"></div>
@@ -412,12 +408,8 @@
   var progress = document.getElementById('novidades-progress');
   var toggleBtn = document.getElementById('novidades-toggle');
   var frame = document.getElementById('novidades-frame');
-  var dateText = document.getElementById('novidades-date-text');
   var DURATION = 3000, STEP = 50;
   var i = 0, elapsed = 0, paused = false;
-
-  var hoje = new Date();
-  dateText.textContent = hoje.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
 
   progress.innerHTML = lista.map(function(){ return '<span class="seg"><i class="fill"></i></span>'; }).join('');
   var segs = Array.from(progress.children);
