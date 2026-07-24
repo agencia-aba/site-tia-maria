@@ -10,13 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Submenu (Kits Festa) no mobile abre por toque
-  document.querySelectorAll('.has-sub > a').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      if (window.innerWidth <= 760) {
-        e.preventDefault();
-        link.parentElement.classList.toggle('open');
-      }
+  // Submenu (Kits Festa) abre/fecha ao clicar na seta — funciona igual em desktop e mobile
+  document.querySelectorAll('.has-sub').forEach((li) => {
+    const chevronBtn = li.querySelector('.nav-chevron-btn');
+    if (!chevronBtn) return;
+    chevronBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = li.classList.toggle('open');
+      chevronBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  function closeAllSubmenus() {
+    document.querySelectorAll('.has-sub.open').forEach((li) => {
+      li.classList.remove('open');
+      const chevronBtn = li.querySelector('.nav-chevron-btn');
+      if (chevronBtn) chevronBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('.has-sub.open').forEach((li) => {
+      if (!li.contains(e.target)) closeAllSubmenus();
     });
   });
 
@@ -95,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key !== 'Escape') return;
     document.querySelectorAll('.modal-backdrop:not([hidden])').forEach((b) => { b.hidden = true; });
     document.querySelectorAll('.lightbox:not([hidden])').forEach((b) => { b.hidden = true; });
+    closeAllSubmenus();
   });
 
   // ---------- Highlight ao chegar via âncora (ex: busca ou link direto) ----------

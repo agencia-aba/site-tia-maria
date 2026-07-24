@@ -56,7 +56,7 @@
         <li><a href="/site-tia-maria/salgados/">Salgados</a></li>
         <li><a href="/site-tia-maria/doces/">Doces</a></li>
         <li class="has-sub">
-          <a href="/site-tia-maria/kits-festa/">Kits Festa<svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <a href="/site-tia-maria/kits-festa/">Kits Festa</a><button class="nav-chevron-btn" type="button" aria-expanded="false" aria-label="Abrir submenu de Kits Festa"><svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
           <ul class="sub-nav">
             <li><a href="/site-tia-maria/kits-festa/em-casa/" data-kit="casa"><span class="sub-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Em Casa</a></li>
             <li><a href="/site-tia-maria/kits-festa/na-escola/" data-kit="escola"><span class="sub-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span>Na Escola</a></li>
@@ -99,12 +99,25 @@
         </div>
       </div>
       <div class="hero-media novidades-widget" id="novidades-widget">
-        <span class="eyebrow novidades-eyebrow">Novidades</span>
+        <div class="novidades-head">
+          <span class="novidades-title">
+            <svg class="novidades-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/></svg>
+            Novidades
+          </span>
+          <span class="novidades-subtitle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            Fotos e lançamentos recentes
+          </span>
+        </div>
         <div class="frame">
+          <div class="novidades-progress" id="novidades-progress"></div>
+          <button class="novidades-toggle" id="novidades-toggle" type="button" aria-label="Pausar apresentação">
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M8 5v14l11-7z"></path></svg>
+          </button>
           <img id="novidades-img" src="" alt="" loading="eager">
         </div>
         <p class="novidades-caption" id="novidades-caption"></p>
-        <div class="novidades-dots" id="novidades-dots"></div>
         <div class="hero-badge">
           <strong>30+ anos</strong>
           <span>de tradição e sabor artesanal em Jandira</span>
@@ -382,16 +395,25 @@
   if (!lista.length) return;
   var img = document.getElementById('novidades-img');
   var caption = document.getElementById('novidades-caption');
-  var dots = document.getElementById('novidades-dots');
-  var widget = document.getElementById('novidades-widget');
-  var i = 0, timer;
+  var progress = document.getElementById('novidades-progress');
+  var toggleBtn = document.getElementById('novidades-toggle');
+  var DURATION = 3000, STEP = 50;
+  var i = 0, elapsed = 0, paused = false, tickTimer;
 
-  dots.innerHTML = lista.map(function(_, idx){
-    return '<button aria-label="Novidade ' + (idx + 1) + '"' + (idx === 0 ? ' class="active"' : '') + '></button>';
-  }).join('');
+  progress.innerHTML = lista.map(function(){ return '<span class="seg"><i class="fill"></i></span>'; }).join('');
+  var segs = Array.from(progress.children);
+
+  function paintSegs(){
+    segs.forEach(function(seg, idx){
+      var fill = seg.querySelector('.fill');
+      if (idx < i) fill.style.width = '100%';
+      else if (idx > i) fill.style.width = '0%';
+    });
+  }
 
   function show(idx){
     i = (idx + lista.length) % lista.length;
+    elapsed = 0;
     var item = lista[i];
     img.style.opacity = 0;
     setTimeout(function(){
@@ -400,27 +422,31 @@
       caption.textContent = item.legenda || '';
       img.style.opacity = 1;
     }, 200);
-    Array.from(dots.children).forEach(function(d, idx2){ d.classList.toggle('active', idx2 === i); });
+    paintSegs();
   }
 
-  function next(){ show(i + 1); }
+  function tick(){
+    if (paused || lista.length < 2) return;
+    elapsed += STEP;
+    var pct = Math.min(100, (elapsed / DURATION) * 100);
+    segs[i].querySelector('.fill').style.width = pct + '%';
+    if (elapsed >= DURATION) show(i + 1);
+  }
 
-  dots.addEventListener('click', function(e){
-    var btn = e.target.closest('button');
-    if (!btn) return;
-    show(Array.from(dots.children).indexOf(btn));
-    resetTimer();
+  segs.forEach(function(seg, idx){
+    seg.addEventListener('click', function(){ show(idx); });
   });
 
-  function resetTimer(){
-    clearInterval(timer);
-    if (lista.length > 1) timer = setInterval(next, 5000);
-  }
+  toggleBtn.addEventListener('click', function(){
+    paused = !paused;
+    toggleBtn.classList.toggle('is-paused', paused);
+    toggleBtn.querySelector('.icon-pause').hidden = paused;
+    toggleBtn.querySelector('.icon-play').hidden = !paused;
+    toggleBtn.setAttribute('aria-label', paused ? 'Continuar apresentação' : 'Pausar apresentação');
+  });
 
   show(0);
-  resetTimer();
-  widget.addEventListener('mouseenter', function(){ clearInterval(timer); });
-  widget.addEventListener('mouseleave', resetTimer);
+  if (lista.length > 1) tickTimer = setInterval(tick, STEP);
 })();
 </script>
 </body>
