@@ -175,24 +175,17 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 .has-sub.open .nav-chevron, .has-sub:focus-within .nav-chevron{ transform: rotate(180deg); }
 .sub-nav{
   position: absolute; top: calc(100% + 10px); left: 0;
+  margin: 0; padding: 0; list-style: none;
   background: var(--paper); border-radius: var(--radius-md); box-shadow: 0 16px 40px rgba(43,36,32,.18); border: 1px solid var(--line);
-  padding: .5rem; min-width: 260px; opacity: 0; visibility: hidden; pointer-events: none;
-  display: flex; flex-direction: column;
+  min-width: 200px; opacity: 0; visibility: hidden; pointer-events: none;
+  display: flex; flex-direction: column; overflow: hidden;
   transition: opacity .15s ease, transform .15s ease;
   transform: translateY(-4px);
 }
 .has-sub.open .sub-nav, .has-sub:focus-within .sub-nav{ opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
-.sub-nav a{ display: flex; align-items:center; gap:.8em; padding: .75em .9em; border-radius: var(--radius-sm); font-size: .92rem; font-weight:600; color: var(--ink); }
+.sub-nav li{ width: 100%; }
+.sub-nav a{ display: block; width: 100%; padding: .85em 1.1em; font-size: .92rem; font-weight:600; color: var(--ink); }
 .sub-nav a:hover{ background: var(--terracotta-l); color: var(--terracotta-d); }
-.sub-nav a .sub-nav-icon{ width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; background: var(--cream-deep); color: var(--ink); }
-.sub-nav a .sub-nav-icon svg{ width:16px; height:16px; }
-.sub-nav a[data-kit="casa"] .sub-nav-icon{ background: color-mix(in srgb, var(--kit-casa) 18%, white); color: var(--kit-casa); }
-.sub-nav a[data-kit="escola"] .sub-nav-icon{ background: color-mix(in srgb, var(--kit-escola) 18%, white); color: var(--kit-escola); }
-.sub-nav a[data-kit="escritorio"] .sub-nav-icon{ background: color-mix(in srgb, var(--kit-escritorio) 18%, white); color: var(--kit-escritorio); }
-.sub-nav-footer-item{ margin-top:.3rem; padding-top:.35rem; border-top:1px solid var(--line); }
-.sub-nav-footer-item a{ justify-content:space-between; font-size:.85rem; font-weight:700; color: var(--terracotta-d); }
-.sub-nav-footer-item a:hover{ background:none; color: var(--terracotta); }
-.sub-nav-footer-arrow{ width:14px; height:14px; flex-shrink:0; }
 
 .header-actions{ display: flex; align-items: center; gap: var(--space-2); }
 .nav-toggle{
