@@ -1,9 +1,9 @@
 /* =========================================================
    Tia Maria — Design System
    Minimalista, quente, artesanal. Cores extraídas do logo.
+   Fonte carregada via <link> no <head> de cada página (não por
+   @import aqui) para não bloquear o carregamento do CSS.
    ========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root{
   /* Cores extraídas do logo Tia Maria */
