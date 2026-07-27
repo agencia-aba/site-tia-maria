@@ -558,6 +558,11 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 .insta-band .handle{ font-weight:700; opacity:.95; }
 .insta-band p{ color:rgba(255,255,255,.9); margin:0; }
 .insta-band .btn-light:hover{ transform: translateY(-2px) scale(1.03); }
+@media (max-width:760px){
+  .insta-band{ padding: var(--space-3); flex-direction:column; align-items:stretch; text-align:center; }
+  .insta-band-text{ flex-direction:column; text-align:center; }
+  .insta-band .btn-light{ width:100%; justify-content:center; }
+}
 
 /* =========== CTA banda =========== */
 .cta-band{
@@ -654,12 +659,8 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
   .main-nav a{ display:block; padding: 1em 0; }
   .has-sub{ justify-content:space-between; }
   .has-sub > a{ flex:1; }
-  .sub-nav{
-    position:static !important; top:auto !important; left:auto !important;
-    opacity:1; visibility:visible; pointer-events:none; box-shadow:none !important; border:none !important;
-    transform:none !important; display:none; padding: 0 0 .5rem var(--space-2); min-width:0 !important; width:100%;
-  }
-  .has-sub.open .sub-nav{ display:flex; pointer-events:auto; }
+  .nav-chevron-btn{ display:none; }
+  .sub-nav{ display:none !important; }
   .nav-toggle{ display:flex; }
   .search-toggle .label{ display:none; }
   .search-toggle{ width:44px; height:44px; padding:0; justify-content:center; }

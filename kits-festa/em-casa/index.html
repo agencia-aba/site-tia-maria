@@ -16,7 +16,7 @@
   .kit-includes-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:var(--space-2); }
   .kit-includes-grid .grp{ min-width:0; }
   .kit-includes-grid .grp b{ display:block; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--terracotta-d); margin-bottom:.3rem; }
-  .kit-includes-grid .grp span{ display:block; font-size:.85rem; color:var(--ink-soft); overflow-wrap:break-word; }
+  .kit-includes-grid .grp div span{ display:block; font-size:.85rem; color:var(--ink-soft); overflow-wrap:break-word; }
   /* Slider de fotos (só aparece quando o kit tem mais de 1 foto configurada) */
   .kit-media{ position:relative; min-height:260px; cursor:zoom-in; }
   .kit-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s ease; }
@@ -38,7 +38,7 @@
   .kit-price-inst{ font-size:.78rem; color:var(--ink-soft); }
   .kit-order-label{ font-weight:700; font-size:.95rem; color:var(--ink); }
   .kit-order-sub{ font-size:.78rem; color:var(--ink-soft); }
-  @media (max-width:760px){ .kit-detail-card{ grid-template-columns:1fr; } .kit-detail-card > img{ aspect-ratio:16/9; min-height:0; } .kit-media{ aspect-ratio:16/9; min-height:0; } .kit-includes-grid{ grid-template-columns:1fr 1fr; } .kit-includes-grid .grp{ min-width:0; } }
+  @media (max-width:760px){ .kit-detail-card{ grid-template-columns:1fr; } .kit-detail-card > img{ aspect-ratio:16/9; min-height:0; } .kit-media{ aspect-ratio:16/9; min-height:0; } .kit-includes-grid{ grid-template-columns:1fr; gap:1rem; } .kit-includes-grid .grp{ min-width:0; } }
 </style>
 </head>
 <body>
