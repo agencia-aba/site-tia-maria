@@ -473,7 +473,7 @@ const TODAS_IMAGENS = GALERIA.flatMap((g) => g.imgs);
 document.getElementById('gallery').innerHTML = GALERIA.map((g) => `
   <div class="gallery-section-title">${g.titulo}</div>
   <div class="gallery-grid">
-    ${g.imgs.map((src) => `<button type="button" data-img="${src}"><img src="${src}" alt="${g.titulo}" loading="lazy"></button>`).join('')}
+    ${g.imgs.map((src) => `<button type="button" data-img="${src}"><img src="${src.replace(/\.webp$/, '-thumb.webp')}" alt="${g.titulo}" loading="lazy"></button>`).join('')}
   </div>
 `).join('');
 
