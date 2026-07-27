@@ -616,6 +616,23 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 .page-hero-icon{ width:56px; height:56px; border-radius:50%; background: var(--terracotta-l); display:flex; align-items:center; justify-content:center; margin: 0 auto var(--space-2); }
 .page-hero-icon svg{ width:28px; height:28px; color: var(--terracotta-d); }
 
+/* Kit Festa — página individual de tamanho (SEO local) */
+.kit-page-intro{ max-width:68ch; margin:0 auto; }
+.kit-coverage{ background:var(--paper); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); padding:var(--space-3) var(--space-4); }
+.kit-coverage h2{ font-size:1.3rem; }
+.kit-coverage-cities{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:var(--space-2); list-style:none; padding:0; }
+.kit-coverage-cities li{ background:var(--cream-deep); color:var(--ink); font-weight:600; font-size:.82rem; padding:.45em .95em; border-radius:999px; }
+.kit-faq details{ background:var(--paper); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:1rem 1.2rem; margin-bottom:.7rem; }
+.kit-faq summary{ cursor:pointer; font-weight:700; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.kit-faq summary::-webkit-details-marker{ display:none; }
+.kit-faq summary::after{ content:"+"; font-size:1.3rem; color:var(--terracotta-d); flex-shrink:0; line-height:1; }
+.kit-faq details[open] summary::after{ content:"\2013"; }
+.kit-faq details p{ margin-top:.7rem; margin-bottom:0; }
+.kit-related-row{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:var(--space-2); }
+.kit-related-row a{ background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:.5em 1.1em; font-weight:600; font-size:.85rem; color:var(--ink); transition:background .15s ease, color .15s ease, border-color .15s ease; }
+.kit-related-row a:hover{ background:var(--terracotta); color:#fff; border-color:var(--terracotta); }
+.kit-related-row a.is-current{ background:var(--ink); color:#fff; border-color:var(--ink); pointer-events:none; }
+
 /* Utility */
 .text-center{ text-align:center; }
 .mt-0{ margin-top:0; }

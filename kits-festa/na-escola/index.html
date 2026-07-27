@@ -183,14 +183,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </a>
 
 <script src="/assets/js/search-data.js"></script>
+<script src="/assets/js/kits-data.js"></script>
 <script src="/assets/js/main.js"></script>
 <script>
-const KITS = [
-  { slug:"kit-15-criancas", nome:"15 Crianças", precoAvista:457, parcelamento:"3x R$152,33", img:"/assets/images/festa-escola/15-criancas.jpg", inclui:{Bolo:"1 Bolo redondo aro 25cm (2kg)", Docinhos:"20 Brigadeiros, 20 Bicho de pé, 20 Beijinhos", Salgados:"25 Coxinhas, 25 Bolinhos de queijo, 25 Risoles", Refrigerantes:"1 Coca-cola 2L, 1 Kuat 2L", Descartáveis:"30 Copos, 20 Pratos, 20 Colheres, Guardanapos, 1 Vela palito"} },
-  { slug:"kit-20-criancas", nome:"20 Crianças", precoAvista:603, parcelamento:"3x R$201,00", img:"/assets/images/festa-escola/20-criancas.jpg", inclui:{Bolo:"1 Bolo retangular 20x30cm (2,5kg)", Docinhos:"20 Brigadeiros, 20 Brigadeiros branco, 20 Beijinhos, 20 Bichos de pé", Salgados:"50 Coxinhas, 25 Bolinhos de queijo, 25 Risoles", Refrigerantes:"1 Coca-cola 2L, 1 Kuat 2L, 1 Fanta 2L", Descartáveis:"40 Copos, 30 Pratos, 30 Colheres, Guardanapos, 1 Vela palito"} },
-  { slug:"kit-30-criancas", nome:"30 Crianças", precoAvista:810, parcelamento:"3x R$270,00", img:"/assets/images/festa-escola/30-criancas.jpg", inclui:{Bolo:"1 Bolo retangular 24x34cm (3kg)", Docinhos:"30 Brigadeiros, 30 Brigadeiros branco, 30 Beijinhos, 30 Bichos de pé", Salgados:"50 Coxinhas, 50 Bolinhos de queijo, 50 Risoles", Refrigerantes:"1 Coca-cola 2L, 2 Kuat 2L, 2 Fanta 2L", Descartáveis:"60 Copos, 40 Pratos, 40 Colheres, Guardanapos, 1 Vela palito"} },
-  { slug:"kit-40-criancas", nome:"40 Crianças", precoAvista:1184, parcelamento:"3x R$394,66", img:"/assets/images/festa-escola/40-criancas.jpg", inclui:{Bolo:"1 Bolo retangular 28x40cm (4kg)", Docinhos:"40 Brigadeiros, 40 Brigadeiros branco, 40 Bichos de pé, 40 Beijinhos", Salgados:"75 Coxinhas, 75 Bolinhos de queijo, 50 Risoles", Refrigerantes:"2 Coca-cola 2L, 2 Kuat 2L, 2 Fanta 2L", Descartáveis:"80 Copos, 50 Pratos, 50 Colheres, Guardanapos, 1 Vela palito"} },
-];
+const KITS = KITS_DATA['na-escola'];
 
 const INCLUI_ICONS = {
   Bolo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7"/><path d="M4 21h16"/><path d="M4 14c1-1 2-1 3 0s2 1 3 0 2-1 3 0 2 1 3 0 2-1 3 0"/><path d="M12 8V5"/></svg>',
@@ -218,6 +214,7 @@ document.getElementById('kits-container').innerHTML = KITS.map((k) => {
       <div class="kit-detail-body">
         <div class="kit-detail-head">
           <h3 class="mt-0">${k.nome}</h3>
+          <a href="/kits-festa/na-escola/${k.urlSlug}/" class="field-hint">Ver página deste kit →</a>
         </div>
         <div class="kit-includes-grid">
           ${Object.entries(k.inclui).map(([label, val]) => `<div class="grp"><span class="grp-icon">${INCLUI_ICONS[label] || ''}</span><div><b>${label}</b><span>${val}</span></div></div>`).join('')}
