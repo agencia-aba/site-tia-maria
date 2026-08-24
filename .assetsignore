@@ -6,3 +6,4 @@
 .claude
 .nojekyll
 node_modules
+wrangler.jsonc
