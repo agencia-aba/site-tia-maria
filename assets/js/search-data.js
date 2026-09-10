@@ -67,7 +67,6 @@ window.TIAMARIA_SEARCH = [
   {cat:'Salgado', nome:'Kibe', url:'/salgados/#fritos-quentes'},
   {cat:'Salgado', nome:'Salgados fritos congelados', url:'/salgados/#fritos-congelados'},
   {cat:'Salgado', nome:'Esfiha (carne, frango, calabresa)', url:'/salgados/#assados'},
-  {cat:'Salgado', nome:'Esfiha de queijo', url:'/salgados/#assados'},
   {cat:'Salgado', nome:'Enroladinho', url:'/salgados/#assados'},
   {cat:'Salgado', nome:'Empada', url:'/salgados/#assados'},
   {cat:'Salgado', nome:'Pastel assado', url:'/salgados/#assados'},
