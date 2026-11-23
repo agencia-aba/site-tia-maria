@@ -716,3 +716,25 @@ p{ margin: 0 0 var(--space-2); color: var(--ink-soft); }
 @media (max-width: 700px){
   .error-404{ padding-block: var(--space-5) var(--space-4); }
 }
+
+/* =========== Tarja: tabela de preços em atualização =========== */
+.price-update-bar{ background: var(--gold); }
+.price-update-bar .container{
+  display: flex; align-items: center; justify-content: center;
+  gap: var(--space-2); flex-wrap: wrap; text-align: center;
+  padding-block: .6rem;
+}
+.price-update-bar p{
+  margin: 0; color: var(--ink); font-weight: 700; font-size: .88rem;
+}
+.price-update-bar a{
+  display: inline-flex; align-items: center; gap: .4em; white-space: nowrap;
+  background: var(--ink); color: #fff; font-weight: 700; font-size: .82rem;
+  padding: .35em 1em; border-radius: 999px; transition: background .2s ease;
+}
+.price-update-bar a:hover{ background: #2a1a0f; }
+
+@media (max-width: 600px){
+  .price-update-bar p{ font-size: .8rem; }
+  .price-update-bar a{ font-size: .78rem; }
+}
